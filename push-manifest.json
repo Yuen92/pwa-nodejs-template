@@ -29,6 +29,10 @@
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
       "type": "script",
       "weight": 1
+    },
+    "service-worker.js": {
+      "type": "script",
+      "weight": 1
     }
   },
   "/view2": {
@@ -45,6 +49,10 @@
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
       "type": "script",
       "weight": 1
+    },
+    "service-worker.js": {
+      "type": "script",
+      "weight": 1
     }
   },
   "/view3": {
@@ -59,6 +67,10 @@
       "weight": 1
     },
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "service-worker.js": {
       "type": "script",
       "weight": 1
     }

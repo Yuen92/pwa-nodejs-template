@@ -13,8 +13,10 @@ export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
 export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
+export const REGISTER_SERVICE_WORKER = 'REGISTER_SERVICE_WORKER';
+export const PAGE_INCREMENT = 'PAGE_INCREMENT';
 
-export const navigate = (path) => (dispatch) => {
+export const navigate = (path) => (dispatch, getState) => {
   // Extract the page name from path.
   const page = path === '/' ? 'view1' : path.slice(1);
 
@@ -24,6 +26,9 @@ export const navigate = (path) => (dispatch) => {
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
   dispatch(updateDrawerState(false));
+
+  // Increment page
+  dispatch(pageIncrement());
 };
 
 const loadPage = (page) => (dispatch) => {
@@ -82,4 +87,16 @@ export const updateDrawerState = (opened) => {
     type: UPDATE_DRAWER_STATE,
     opened
   };
+};
+
+export const registerServiceWorker = () => (dispatch, getState) => {
+  if(!getState().app.serviceWorkerRegistered){
+    var event = new CustomEvent('serviceWorkerToRegister');
+    window.dispatchEvent(event);
+    dispatch({ type: REGISTER_SERVICE_WORKER })
+  }
+};
+
+export const pageIncrement = () => (dispatch) => {
+  dispatch({ type: PAGE_INCREMENT })
 };

@@ -13,7 +13,9 @@ import {
   UPDATE_OFFLINE,
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
-  UPDATE_DRAWER_STATE
+  UPDATE_DRAWER_STATE,
+  REGISTER_SERVICE_WORKER,
+  PAGE_INCREMENT
 } from '../actions/app.js';
 
 const INITIAL_STATE = {
@@ -21,6 +23,8 @@ const INITIAL_STATE = {
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
+  serviceWorkerRegistered: false,
+  pageCounter: 0
 };
 
 const app = (state = INITIAL_STATE, action) => {
@@ -49,6 +53,16 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         snackbarOpened: false
+      };
+    case REGISTER_SERVICE_WORKER:
+      return {
+        ...state,
+        serviceWorkerRegistered: true
+      };
+    case PAGE_INCREMENT:
+      return {
+        ...state,
+        pageCounter: state.pageCounter + 1
       };
     default:
       return state;

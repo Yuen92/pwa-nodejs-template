@@ -23,7 +23,8 @@ import { store } from '../store.js';
 import {
   navigate,
   updateOffline,
-  updateDrawerState
+  updateDrawerState,
+  registerServiceWorker
 } from '../actions/app.js';
 
 // These are the elements needed by this element.
@@ -236,6 +237,9 @@ class MyApp extends connect(store)(LitElement) {
     // To force all event listeners for gestures to be passive.
     // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
     setPassiveTouchGestures(true);
+    
+    // Listen first user interaction
+    this._listenFirstUserInteraction();
   }
 
   firstUpdated() {
@@ -269,6 +273,31 @@ class MyApp extends connect(store)(LitElement) {
     this._offline = state.app.offline;
     this._snackbarOpened = state.app.snackbarOpened;
     this._drawerOpened = state.app.drawerOpened;
+  }
+
+  _listenFirstUserInteraction(e) {
+    // Define listener at window level to remove after the first usage
+    window.pwaNodejsTemplate = {};
+    window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener = function (e) {
+      store.dispatch(registerServiceWorker());
+      
+      // clean listenFirstUserInteraction listener
+      window.removeEventListener("click", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+      window.removeEventListener("touchstart", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+      window.removeEventListener("scroll", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+      window.removeEventListener("mousemove", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+      window.removeEventListener("mousedown", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+      window.removeEventListener("keypress", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    }
+
+    // listen user interaction passive or active to register service worker
+    // List of events to listen https://stackoverflow.com/a/10126042 
+    window.addEventListener("click", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    window.addEventListener("touchstart", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    window.addEventListener("scroll", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    window.addEventListener("mousemove", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    window.addEventListener("mousedown", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    window.addEventListener("keypress", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
   }
 }
 
