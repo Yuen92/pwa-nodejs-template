@@ -49,7 +49,7 @@ class MyHome extends PageViewElement {
           "<a href="/">Data-Driven Technologicals Innovations</a>" uses these technologicals innovations :
         </p>
         <ul>
-          <li>Usage of the <a href="https://developers.google.com/web/fundamentals/performance/rail>Response Animation Idle Load model (RAIL)</a></li>
+          <li>Usage of the <a href="https://developers.google.com/web/fundamentals/performance/rail">Response Animation Idle Load model (RAIL)</a></li>
           <li><a href="https://developers.google.com/web/fundamentals/architecture/app-shell">App Shell software architecture<a></li>
           <li><a href="https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns">Responsive Web Design pattern (RWD)</a></li>
           <li><a href="https://developers.google.com/web/fundamentals/performance/prpl-pattern/">Push Render Pre-cache Lazy-load pattern (PRPL)</a></li>
