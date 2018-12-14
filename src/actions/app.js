@@ -37,8 +37,8 @@ const loadPage = (page) => (dispatch) => {
       import('../components/my-home.js').then((module) => {
       });
       break;
-    case 'view1':
-      import('../components/my-view1.js').then((module) => {
+    case 'settings':
+      import('../components/my-settings.js').then((module) => {
         // Put code in here that you want to run every time when
         // navigating to view1 after my-view1.js is loaded.
       });

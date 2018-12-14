@@ -72,10 +72,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     <script>
       if ('serviceWorker' in navigator) {
-        // register minimal Service Worker
-        navigator.serviceWorker.register('service-worker.js', {
-          scope: '/',
+        // register minimal Service Worker for the first visit
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          if(registrations.length == 0){
+            navigator.serviceWorker.register('service-worker-min.js', {
+              scope: '/',
+            });
+          }
         });
+        
         // register pre-caching Service Worker when user interacts with the PWA
         window.addEventListener('serviceWorkerToRegister', function() {
           navigator.serviceWorker.register('service-worker.js', {

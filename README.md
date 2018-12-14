@@ -40,4 +40,21 @@ This app provide the server-push using :
 
 
 ## TODOs
-- [] Setup gulp to create service-worker-min.js
+### Workaroun failed - Fix fonts.googleapis.com dependency from paper-styles used by paper-item
+Replace [font-roboto](https://github.com/PolymerElements/font-roboto) by [font-roboto-local](https://github.com/PolymerElements/font-roboto-local)
+Install [font-roboto-local](https://github.com/PolymerElements/font-roboto-local) :
+> npm install --save @polymer/font-roboto-local
+
+In the file [typography.js](https://github.com/PolymerElements/paper-styles/blob/master/typography.js) comment :
+> //import '@polymer/font-roboto/roboto.js';
+
+and add :
+> import '@polymer/font-roboto-local/roboto.js';
+
+In the file [paper-styles/.../package.json](https://github.com/PolymerElements/paper-styles/blob/master/package.json) change dependancy, replace :
+> "@polymer/font-roboto": "^3.0.1",
+
+by :
+> "@polymer/font-roboto-local": "^3.0.2",
+
+Related to this open issue : [Remove roboto dependency from paper-styles](https://github.com/PolymerElements/paper-styles/pull/128#issuecomment-447400852)
