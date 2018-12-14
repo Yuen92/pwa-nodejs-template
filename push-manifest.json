@@ -13,6 +13,16 @@
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
       "type": "script",
       "weight": 1
+    },
+    "manifest.json": {
+      "type": "script",
+      "weight": 1
+    },
+    "images/favicon.ico": {
+      "weight": 1
+    },
+    "images/manifest/icon-192x192.png": {
+      "weight": 1
     }
   },
   "/view1": {
@@ -30,8 +40,14 @@
       "type": "script",
       "weight": 1
     },
-    "service-worker.js": {
+    "manifest.json": {
       "type": "script",
+      "weight": 1
+    },
+    "images/favicon.ico": {
+      "weight": 1
+    },
+    "images/manifest/icon-192x192.png": {
       "weight": 1
     }
   },
@@ -50,8 +66,14 @@
       "type": "script",
       "weight": 1
     },
-    "service-worker.js": {
+    "manifest.json": {
       "type": "script",
+      "weight": 1
+    },
+    "images/favicon.ico": {
+      "weight": 1
+    },
+    "images/manifest/icon-192x192.png": {
       "weight": 1
     }
   },
@@ -70,8 +92,14 @@
       "type": "script",
       "weight": 1
     },
-    "service-worker.js": {
+    "manifest.json": {
       "type": "script",
+      "weight": 1
+    },
+    "images/favicon.ico": {
+      "weight": 1
+    },
+    "images/manifest/icon-192x192.png": {
       "weight": 1
     }
   }

@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta property="og:image" content="images/manifest/icon-144x144.png" />
 
     <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin> -->
     
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" async></script>
@@ -72,8 +72,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script type="module" src="src/components/my-app.js" async></script>
     
     <script>
-      // Load and register pre-caching Service Worker
       if ('serviceWorker' in navigator) {
+        // register minimal Service Worker
+        navigator.serviceWorker.register('service-worker.js', {
+          scope: '/',
+        });
+        // register pre-caching Service Worker when user interacts with the PWA
         window.addEventListener('serviceWorkerToRegister', function() {
           navigator.serviceWorker.register('service-worker.js', {
             scope: '/',
@@ -114,5 +118,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
+    <script>window.performance.mark('index_fully_parsed');</script>
   </body>
 </html>

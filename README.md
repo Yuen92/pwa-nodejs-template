@@ -38,3 +38,6 @@ This app provide the server-push using :
 ## Redux for state management
 [Redux](https://redux.js.org/) is a small state management container, that is view agnostic and widely used. It is centered around the idea of separating your application logic (the application state) from your view layer, and having the store as a single source of truth for the application state.
 
+
+## TODOs
+- [] Setup gulp to create service-worker-min.js
