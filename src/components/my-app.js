@@ -76,7 +76,6 @@ class MyApp extends connect(store)(LitElement) {
       }
 
       [main-title] {
-        text-transform: lowercase;
         font-size: 30px;
         /* In the narrow layout, the toolbar is offset by the width of the
         drawer button, and the text looks not centered. Add a padding to
@@ -206,6 +205,7 @@ class MyApp extends connect(store)(LitElement) {
 
     <!-- Main content -->
     <main role="main" class="main-content">
+      <my-home class="page" ?active="${this._page === 'home'}"></my-home>
       <my-view1 class="page" ?active="${this._page === 'view1'}"></my-view1>
       <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
       <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
@@ -213,7 +213,7 @@ class MyApp extends connect(store)(LitElement) {
     </main>
 
     <footer>
-      <p>Made with &hearts; by the Polymer team.</p>
+      <p>Made with &hearts; thanks Polymer contributors</p>
     </footer>
 
     <snack-bar ?active="${this._snackbarOpened}">

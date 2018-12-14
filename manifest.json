@@ -1,7 +1,7 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
+  "name": "Data-Driven Technologicals Innovations",
+  "short_name": "DDTI",
+  "description": "Amazing progressive web application which improves digital business using the latest web technology and data-driven model.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#3f51b5",

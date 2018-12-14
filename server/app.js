@@ -9,7 +9,7 @@ app.use(compression())
 // For each route check with the server (ETAG) if the resources change
 // If not the browser will use the resource in from browser cache
 // https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#defining_optimal_cache-control_policy
-app.get(["/", "/view*"],
+app.get(["/", "/view*", "/home"],
   function ( request, response, next ) {
     response.set('Cache-Control', 'public, no-cache');
     next();
