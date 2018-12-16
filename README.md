@@ -40,7 +40,7 @@ This app provide the server-push using :
 
 
 ## TODOs
-### Workaroun failed - Fix fonts.googleapis.com dependency from paper-styles used by paper-item
+### Workaround failed - Fix fonts.googleapis.com dependency from paper-styles used by paper-item
 Replace [font-roboto](https://github.com/PolymerElements/font-roboto) by [font-roboto-local](https://github.com/PolymerElements/font-roboto-local)
 Install [font-roboto-local](https://github.com/PolymerElements/font-roboto-local) :
 > npm install --save @polymer/font-roboto-local

@@ -24,6 +24,11 @@ class MySettings extends PageViewElement {
       ${SharedStyles}
       <custom-style>
         <style is="custom-style">
+          section {
+            padding-left: 0px;
+            padding-right: 0px;
+          }
+
           paper-item {
             cursor: pointer;
             color: #039be5;
@@ -39,12 +44,30 @@ class MySettings extends PageViewElement {
             margin: 10px;
             box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
           }
-          paper-item:active, paper-item:hover {
-            background-color: #e1f3fc;
+
+          paper-item:hover {
+            background: rgb(225, 245, 250);
           }
           
           paper-item:active {
-            background-color: #c3e7f9
+            background: rgb(195, 230, 250);
+          }
+
+          @media screen and (max-width: 600px) {
+            paper-item:active, paper-item:hover:active {
+              background: none;
+              // background: green
+            }
+            
+            paper-item:focus, paper-item:hover:focus {
+              background: rgb(195, 230, 250);
+              // background: orange
+            }
+
+            paper-item:hover {
+              background: none;
+              // background: red;
+            }
           }
         </style>
       </custom-style>
