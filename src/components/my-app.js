@@ -195,7 +195,7 @@ class MyApp extends connect(store)(LitElement) {
     </app-header>
 
     <!-- Drawer content -->
-    <app-drawer .opened="${this._drawerOpened}"
+    <app-drawer id="drawer" .opened="${this._drawerOpened}"
         @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
         <a ?selected="${this._page === 'home'}" href="/home">Home</a>
@@ -248,6 +248,10 @@ class MyApp extends connect(store)(LitElement) {
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     installMediaQueryWatcher(`(min-width: 460px)`,
         () => store.dispatch(updateDrawerState(false)));
+
+    // workaround for drawer when using paper-item
+    this.shadowRoot.querySelector("app-header").style.zIndex = 1;
+    this.shadowRoot.querySelector("app-drawer").style.zIndex = 1;
   }
 
   updated(changedProps) {
