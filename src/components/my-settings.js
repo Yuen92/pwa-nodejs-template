@@ -18,11 +18,9 @@ import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 // These are the elements needed by this element.
 import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-icon-item.js';
-import '@polymer/iron-icon/iron-icon.js';
-import '@polymer/iron-icons/iron-icons.js';
 
 // these icons are needed by this elements
-import { keyboardArrowRight } from './my-icons.js';
+import { chevronRight, home, cloudDownload, locationOn, fullscreen, call, accountCircle, notifications } from './my-icons.js';
 
 class MySettings extends PageViewElement {
   render() {
@@ -48,45 +46,45 @@ class MySettings extends PageViewElement {
         <h1>Settings</h1>
         <paper-listbox>
           <paper-icon-item>
-            <iron-icon icon="search" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${home}</div>
             <div style="flex: auto;">Application Install</div>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${cloudDownload}</div>
             <div style="flex: auto;">Load All Screens</div>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="inbox" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${locationOn}</div>
             Enable Location
             <span style="flex: auto;"></span>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${fullscreen}</div>
             Enable Fullscreen
             <span style="flex: auto;"></span>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${call}</div>
             Call
             <span style="flex: auto;"></span>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${accountCircle}</div>
             Auto Sign-in
             <span style="flex: auto;"></span>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            <div slot="item-icon">${notifications}</div>
             Enable Push Notifications
             <span style="flex: auto;"></span>
-            ${keyboardArrowRight}
+            ${chevronRight}
           </paper-icon-item>
         </paper-listbox>
       </section>
