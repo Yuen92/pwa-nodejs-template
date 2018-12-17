@@ -15,7 +15,8 @@ import {
   CLOSE_SNACKBAR,
   UPDATE_DRAWER_STATE,
   REGISTER_SERVICE_WORKER,
-  PAGE_INCREMENT
+  PAGE_INCREMENT,
+  PROMPT_APP_INSTALL_BANNER  
 } from '../actions/app.js';
 
 const INITIAL_STATE = {
@@ -24,7 +25,8 @@ const INITIAL_STATE = {
   drawerOpened: false,
   snackbarOpened: false,
   serviceWorkerRegistered: false,
-  pageCounter: 0
+  pageCounter: 0,
+  promptAppInstallBanner: false
 };
 
 const app = (state = INITIAL_STATE, action) => {
@@ -63,6 +65,30 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         pageCounter: state.pageCounter + 1
+      };
+    case PROMPT_APP_INSTALL_BANNER:
+      console.log("PROMPT_APP_INSTALL_BANNER")
+      var result = false;
+      if(deferredPrompt){
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice
+          .then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+          });
+          result = true;
+      }else{
+        console.log("PROMPT_APP_INSTALL_BANNER failed : deferredPrompt is undefined")
+        result = false;
+      }
+      return {
+        ...state,
+        promptAppInstallBanner: result
       };
     default:
       return state;

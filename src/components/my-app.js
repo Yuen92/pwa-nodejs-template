@@ -229,7 +229,8 @@ class MyApp extends connect(store)(LitElement) {
       _page: { type: String },
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
-      _offline: { type: Boolean }
+      _offline: { type: Boolean },
+      _deferredPrompt: { type: Object }
     }
   }
 

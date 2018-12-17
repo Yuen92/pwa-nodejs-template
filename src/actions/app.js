@@ -15,6 +15,7 @@ export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const REGISTER_SERVICE_WORKER = 'REGISTER_SERVICE_WORKER';
 export const PAGE_INCREMENT = 'PAGE_INCREMENT';
+export const PROMPT_APP_INSTALL_BANNER = 'PROMPT_APP_INSTALL_BANNER';
 
 export const navigate = (path) => (dispatch, getState) => {
   // Extract the page name from path.
@@ -103,4 +104,8 @@ export const registerServiceWorker = () => (dispatch, getState) => {
 
 export const pageIncrement = () => (dispatch) => {
   dispatch({ type: PAGE_INCREMENT })
+};
+
+export const promptAppInstallBanner = () => (dispatch) => {
+  dispatch({ type: PROMPT_APP_INSTALL_BANNER })
 };
