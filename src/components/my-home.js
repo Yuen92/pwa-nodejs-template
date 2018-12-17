@@ -9,7 +9,7 @@ class MyHome extends PageViewElement {
     return html`
       ${SharedStyles}
       <section>
-        <h1>Data-Driven Technologicals Innovations</h1>
+        <h1>Data-Driven Technological Innovations</h1>
         <p>
           This amazing application "<a href="/">Data-Driven Technologicals Innovations</a>" applies the latest technology available around the web to improve digital business.
         </p>
