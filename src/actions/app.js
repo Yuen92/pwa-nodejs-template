@@ -16,6 +16,8 @@ export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const REGISTER_SERVICE_WORKER = 'REGISTER_SERVICE_WORKER';
 export const PAGE_INCREMENT = 'PAGE_INCREMENT';
 export const PROMPT_APP_INSTALL_BANNER = 'PROMPT_APP_INSTALL_BANNER';
+export const UPDATE_APP_INSTALL = 'UPDATE_APP_INSTALL';
+
 
 export const navigate = (path) => (dispatch, getState) => {
   // Extract the page name from path.
@@ -113,4 +115,11 @@ export const pageIncrement = () => (dispatch) => {
 
 export const promptAppInstallBanner = () => (dispatch) => {
   dispatch({ type: PROMPT_APP_INSTALL_BANNER })
+};
+
+export const updateAppInstallStatus = (status) => (dispatch) => {
+  dispatch({
+    type: UPDATE_APP_INSTALL,
+    status
+  })
 };

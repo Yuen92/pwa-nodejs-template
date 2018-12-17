@@ -16,7 +16,8 @@ import {
   UPDATE_DRAWER_STATE,
   REGISTER_SERVICE_WORKER,
   PAGE_INCREMENT,
-  PROMPT_APP_INSTALL_BANNER  
+  PROMPT_APP_INSTALL_BANNER,
+  UPDATE_APP_INSTALL
 } from '../actions/app.js';
 
 const INITIAL_STATE = {
@@ -26,7 +27,8 @@ const INITIAL_STATE = {
   snackbarOpened: false,
   serviceWorkerRegistered: false,
   pageCounter: 0,
-  promptAppInstallBanner: false
+  promptAppInstallBanner: false,
+  appInstallAvailable: false
 };
 
 const app = (state = INITIAL_STATE, action) => {
@@ -89,6 +91,11 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         promptAppInstallBanner: result
+      };
+    case UPDATE_APP_INSTALL:
+      return {
+        ...state,
+        appInstallAvailable: action.status
       };
     default:
       return state;

@@ -17,16 +17,21 @@ export const PaperIconItemStyles = html`
       cursor: pointer;
       color: rgb(0, 155, 230);
       --paper-item-focused: {
-      background: rgb(195, 230, 250);
+        background: rgb(195, 230, 250);
       };
       --paper-item-selected: {
-      background: rgb(225, 245, 250)
+        /* background: rgb(225, 245, 250) */
       }
       --paper-item-focused-before: {
-      background: none;
+        background: none;
       }
       margin: 10px;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    }
+
+    paper-icon-item[disabled]{
+      color: grey;
+      background: rgb(210, 220, 220);
     }
 
     paper-icon-item:hover {
@@ -39,15 +44,15 @@ export const PaperIconItemStyles = html`
 
     @media screen and (max-width: 600px) {
       paper-icon-item:active, paper-icon-item:hover:active {
-      background: none;
+        background: none;
       }
       
       paper-icon-item:focus, paper-icon-item:hover:focus {
-      background: rgb(195, 230, 250);
+        background: rgb(195, 230, 250);
       }
 
       paper-icon-item:hover {
-      background: none;
+        background: none;
       }
     }
   </style>

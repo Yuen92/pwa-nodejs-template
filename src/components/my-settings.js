@@ -10,15 +10,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
-import { connect } from 'pwa-helpers/connect-mixin.js';
-
-// This element is connected to the Redux store.
-import { store } from '../store.js';
-
-// These are the actions needed by this element.
-import {
-  promptAppInstallBanner
-} from '../actions/app.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
@@ -31,7 +22,7 @@ import '@polymer/paper-item/paper-icon-item.js';
 // these icons are needed by this elements
 import { chevronRight, home, cloudDownload, locationOn, fullscreen, call, accountCircle, notifications } from './my-icons.js';
 
-class MySettings extends connect(store) (PageViewElement) {
+class MySettings extends PageViewElement {
   render() {
     return html`
       ${SharedStyles}
@@ -55,7 +46,7 @@ class MySettings extends connect(store) (PageViewElement) {
         <h1>Settings</h1>
         <paper-listbox>
           <a href="/settings/app-install">
-            <paper-icon-item @click="${this._appInstallClicked}">
+            <paper-icon-item>
               <div slot="item-icon">${home}</div>
               <div style="flex: auto;">Application Install</div>
               ${chevronRight}
@@ -100,10 +91,6 @@ class MySettings extends connect(store) (PageViewElement) {
         </paper-listbox>
       </section>
     `;
-  }
-
-  _appInstallClicked(e) {
-    store.dispatch(promptAppInstallBanner());
   }
 }
 

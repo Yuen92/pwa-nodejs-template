@@ -54,7 +54,7 @@ class MyAppInstall extends connect(store) (PageViewElement) {
       <section>
         <h1>Settings</h1>
         <paper-listbox>
-          <paper-icon-item @click="${this._appInstallClicked}">
+          <paper-icon-item @click="${this._appInstallClicked}" ?disabled="${!this._appInstallAvailable}">
             <div slot="item-icon">${home}</div>
             <div style="flex: auto;">Application Install</div>
             ${chevronRight}
@@ -67,15 +67,33 @@ class MyAppInstall extends connect(store) (PageViewElement) {
           </paper-icon-item>
         </paper-listbox>
       </section>
+      <snack-bar ?active="${this._appInstallAvailable}">${this.message}</snack-bar>
     `;
+  }
+
+  static get properties() {
+    return {
+      message: { type: String },
+      _appInstallAvailable: { type: Boolean }
+    }
+  }
+
+  stateChanged(state) {
+    this._appInstallAvailable = state.app.appInstallAvailable;
   }
 
   _appInstallClicked(e) {
     store.dispatch(promptAppInstallBanner());
+    if(deferredPrompt){
+      this.message = "Prompt the app install banner."
+    }else{
+      this.message = "Impossible to install the application. Clear cache is required."
+    }
+    this._snackbarOpened = true
   }
 
   _clearCacheClicked(e) {
-    window.location.reload(true) 
+    window.location.reload(true)
   }
 }
 

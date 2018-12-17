@@ -24,7 +24,8 @@ import {
   navigate,
   updateOffline,
   updateDrawerState,
-  registerServiceWorker
+  registerServiceWorker,
+  updateAppInstallStatus
 } from '../actions/app.js';
 
 // These are the elements needed by this element.
@@ -231,7 +232,7 @@ class MyApp extends connect(store)(LitElement) {
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
       _offline: { type: Boolean },
-      _deferredPrompt: { type: Object }
+      _deferredPromptAvailable: { type: Boolean }
     }
   }
 
@@ -243,6 +244,13 @@ class MyApp extends connect(store)(LitElement) {
     
     // Listen first user interaction
     this._listenFirstUserInteraction();
+
+    if(deferredPrompt){
+      store.dispatch(updateAppInstallStatus(true))
+    } else{
+      store.dispatch(updateAppInstallStatus(false))
+      window.addEventListener('beforeinstallprompt', store.dispatch(updateAppInstallStatus(false)));
+    }
   }
 
   firstUpdated() {
