@@ -15,7 +15,7 @@ export const PaperItemStyles = html`
   <style is="custom-style">
     paper-item {
       cursor: pointer;
-      color: #039be5;
+      color: rgb(0, 155, 230);
       --paper-item-focused: {
       background: rgb(195, 230, 250);
       };

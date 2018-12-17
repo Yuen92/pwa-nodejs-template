@@ -15,11 +15,13 @@ import { PageViewElement } from './page-view-element.js';
 import { SharedStyles } from './shared-styles.js';
 import { PaperItemStyles } from './paper-item-styles.js';
 import { PaperIconItemStyles } from './paper-icon-item-styles.js';
+import { keyboardArrowRight } from './my-icons.js';
 
 // These are the elements needed by this element.
 import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-item/paper-icon-item.js';
+import '@polymer/paper-icon-button/paper-icon-button.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
 import './setting-item.js';
@@ -36,6 +38,10 @@ class MySettings extends PageViewElement {
             padding-left: 0px;
             padding-right: 0px;
           }
+          svg {
+            margin-left: auto;
+            fill: currentColor
+          }
         </style>
       </custom-style>
       <section>
@@ -44,19 +50,39 @@ class MySettings extends PageViewElement {
           <paper-icon-item>
             <iron-icon icon="search" slot="item-icon"></iron-icon>
             Application Install
+            ${keyboardArrowRight}
+          </paper-icon-item>
           </paper-icon-item>
           <paper-icon-item>
-            <iron-icon icon="inbox" slot="item-icon"></iron-icon>
+            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
             Load All Screens
+            ${keyboardArrowRight}
           </paper-icon-item>
           <paper-icon-item>
             <iron-icon icon="inbox" slot="item-icon"></iron-icon>
             Enable Location
+            ${keyboardArrowRight}
           </paper-icon-item>
-          <paper-item>Enable Fullscreen</paper-item>
-          <paper-item>Call</paper-item>
-          <paper-item>Auto Sign-in</paper-item>
-          <paper-item>Enable Push Notifications</paper-item>
+          <paper-icon-item>
+            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            Enable Fullscreen
+            ${keyboardArrowRight}
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            Call
+            ${keyboardArrowRight}
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            Auto Sign-in
+            ${keyboardArrowRight}
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="icons:home" slot="item-icon"></iron-icon>
+            Enable Push Notifications
+            ${keyboardArrowRight}
+          </paper-icon-item>
         </paper-listbox>
       </section>
     `;
