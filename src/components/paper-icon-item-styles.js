@@ -15,7 +15,7 @@ export const PaperIconItemStyles = html`
   <style is="custom-style">
     paper-icon-item {
       cursor: pointer;
-      color: #039be5;
+      color: rgb(0, 155, 230);
       --paper-item-focused: {
       background: rgb(195, 230, 250);
       };
@@ -40,17 +40,14 @@ export const PaperIconItemStyles = html`
     @media screen and (max-width: 600px) {
       paper-icon-item:active, paper-icon-item:hover:active {
       background: none;
-      // background: green
       }
       
       paper-icon-item:focus, paper-icon-item:hover:focus {
       background: rgb(195, 230, 250);
-      // background: orange
       }
 
       paper-icon-item:hover {
       background: none;
-      // background: red;
       }
     }
   </style>

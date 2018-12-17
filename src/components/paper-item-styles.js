@@ -40,17 +40,14 @@ export const PaperItemStyles = html`
     @media screen and (max-width: 600px) {
       paper-item:active, paper-item:hover:active {
       background: none;
-      // background: green
       }
       
       paper-item:focus, paper-item:hover:focus {
       background: rgb(195, 230, 250);
-      // background: orange
       }
 
       paper-item:hover {
       background: none;
-      // background: red;
       }
     }
   </style>

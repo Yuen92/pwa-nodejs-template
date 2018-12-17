@@ -58,3 +58,6 @@ by :
 > "@polymer/font-roboto-local": "^3.0.2",
 
 Related to this open issue : [Remove roboto dependency from paper-styles](https://github.com/PolymerElements/paper-styles/pull/128#issuecomment-447400852)
+
+### Use Template Style
+### Load icons needed only - remove import '@polymer/iron-icons/iron-icons.js';
