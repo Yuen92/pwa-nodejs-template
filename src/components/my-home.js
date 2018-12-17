@@ -11,7 +11,7 @@ class MyHome extends PageViewElement {
       <section>
         <h1>Data-Driven Technological Innovations</h1>
         <p>
-          This amazing application "<a href="/">Data-Driven Technologicals Innovations</a>" applies the latest technology available around the web to improve digital business.
+          This amazing application "<a href="/">Data-Driven Technological Innovations</a>" applies the latest technology available around the web to improve digital business.
         </p>
         <p>
           The data-driven model is used to provide in the fastest way the last features possibles.
@@ -34,7 +34,7 @@ class MyHome extends PageViewElement {
         <h2>Latest Features</h2>
         <p>
           The latest features make it easy to engage the users and build a strong relationship with them.
-          "<a href="/">Data-Driven Technologicals Innovations</a>" uses all of these features :
+          "<a href="/">Data-Driven Technological Innovations</a>" uses all of these features :
         </p>
         <ul>
           <li>Usage in offline mode to use it everywhere and anytime</li>
@@ -43,10 +43,10 @@ class MyHome extends PageViewElement {
         </ul>
       </section>
       <section>
-        <h2>Technologicals Innovations</h2>
+        <h2>Technological Innovations</h2>
         <p>
-          The technologicals innovations allow to support these latest features and provide the best user experience.
-          "<a href="/">Data-Driven Technologicals Innovations</a>" uses these technologicals innovations :
+          The technological innovations allow to support these latest features and provide the best user experience.
+          "<a href="/">Data-Driven Technological Innovations</a>" uses these technological innovations :
         </p>
         <ul>
           <li>Usage of the <a href="https://developers.google.com/web/fundamentals/performance/rail">Response Animation Idle Load model (RAIL)</a></li>
