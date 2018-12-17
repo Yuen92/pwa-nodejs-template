@@ -36,12 +36,17 @@ const loadPage = (page) => (dispatch) => {
   switch(page) {
     case 'home':
       import('../components/my-home.js').then((module) => {
+        // Put code in here that you want to run every time when
+        // navigating to view1 after my-view1.js is loaded.
       });
       break;
     case 'settings':
       import('../components/my-settings.js').then((module) => {
-        // Put code in here that you want to run every time when
-        // navigating to view1 after my-view1.js is loaded.
+      });
+      break;
+    case 'settings/app-install':
+      page = "app-install";
+      import('../components/my-app-install.js').then((module) => {
       });
       break;
     case 'view2':

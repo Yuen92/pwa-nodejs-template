@@ -71,6 +71,42 @@
       "weight": 1
     }
   },
+  "/settings/app-install": {
+    "src/components/my-app.js": {
+      "crossorigin": "anonymous",
+      "type": "script",
+      "weight": 1
+    },
+    "src/components/my-app-install.js": {
+      "crossorigin": "anonymous",
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "manifest.json": {
+      "type": "fetch",
+      "weight": 1
+    },
+    "service-worker-min.js": {
+      "type": "worker",
+      "weight": 1
+    },
+    "service-worker.js": {
+      "type": "worker",
+      "weight": 1
+    },
+    "images/favicon.ico": {
+      "type": "image",
+      "weight": 1
+    },
+    "images/manifest/icon-192x192.png": {
+      "type": "image",
+      "weight": 1
+    }
+  },
   "/view2": {
     "src/components/my-app.js": {
       "crossorigin": "anonymous",

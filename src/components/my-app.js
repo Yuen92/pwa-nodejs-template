@@ -209,6 +209,7 @@ class MyApp extends connect(store)(LitElement) {
     <main role="main" class="main-content">
       <my-home class="page" ?active="${this._page === 'home'}"></my-home>
       <my-settings class="page" ?active="${this._page === 'settings'}"></my-settings>
+      <my-app-install class="page" ?active="${this._page === 'app-install'}"></my-app-install>
       <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
       <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
       <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>

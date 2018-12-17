@@ -29,9 +29,9 @@ import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-icon-item.js';
 
 // these icons are needed by this elements
-import { chevronRight, home, cloudDownload, locationOn, fullscreen, call, accountCircle, notifications } from './my-icons.js';
+import { chevronRight, home, clearCache} from './my-icons.js';
 
-class MySettings extends connect(store) (PageViewElement) {
+class MyAppInstall extends connect(store) (PageViewElement) {
   render() {
     return html`
       ${SharedStyles}
@@ -54,47 +54,15 @@ class MySettings extends connect(store) (PageViewElement) {
       <section>
         <h1>Settings</h1>
         <paper-listbox>
-          <a href="/settings/app-install">
-            <paper-icon-item @click="${this._appInstallClicked}">
-              <div slot="item-icon">${home}</div>
-              <div style="flex: auto;">Application Install</div>
-              ${chevronRight}
-            </paper-icon-item>
-          </a>
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${cloudDownload}</div>
-            <div style="flex: auto;">Load All Screens</div>
+          <paper-icon-item @click="${this._appInstallClicked}">
+            <div slot="item-icon">${home}</div>
+            <div style="flex: auto;">Application Install</div>
             ${chevronRight}
           </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${locationOn}</div>
-            Enable Location
-            <span style="flex: auto;"></span>
-            ${chevronRight}
           </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${fullscreen}</div>
-            Enable Fullscreen
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${call}</div>
-            Call
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${accountCircle}</div>
-            Auto Sign-in
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${notifications}</div>
-            Enable Push Notifications
-            <span style="flex: auto;"></span>
+          <paper-icon-item @click="${this._clearCacheClicked}">
+            <div slot="item-icon">${clearCache}</div>
+            <div style="flex: auto;">Clear Cache</div>
             ${chevronRight}
           </paper-icon-item>
         </paper-listbox>
@@ -105,6 +73,10 @@ class MySettings extends connect(store) (PageViewElement) {
   _appInstallClicked(e) {
     store.dispatch(promptAppInstallBanner());
   }
+
+  _clearCacheClicked(e) {
+    window.location.reload(true) 
+  }
 }
 
-window.customElements.define('my-settings', MySettings);
+window.customElements.define('my-app-install', MyAppInstall);
