@@ -17,7 +17,8 @@ import {
   REGISTER_SERVICE_WORKER,
   PAGE_INCREMENT,
   PROMPT_APP_INSTALL_BANNER,
-  UPDATE_APP_INSTALL
+  UPDATE_APP_INSTALL,
+  ADD_PAGE_ANIMATION
 } from '../actions/app.js';
 
 const INITIAL_STATE = {
@@ -28,7 +29,8 @@ const INITIAL_STATE = {
   serviceWorkerRegistered: false,
   pageCounter: 0,
   promptAppInstallBanner: false,
-  appInstallAvailable: false
+  appInstallAvailable: false,
+  pageAnimationAdded: false
 };
 
 const app = (state = INITIAL_STATE, action) => {
@@ -96,6 +98,23 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         appInstallAvailable: action.status
+      };
+    case ADD_PAGE_ANIMATION:
+      var result = false
+      if(!state.pageAnimationAdded){
+        if(state.pageCounter > 0){
+          var pages = document.querySelector("my-app").shadowRoot.querySelectorAll(".page")
+          pages.forEach(function(value){
+            value.classList.add("repeat-view");
+          })
+          result = true;
+        }
+      } else{
+        result=true
+      }
+      return {
+        ...state,
+        pageAnimationAdded: result
       };
     default:
       return state;

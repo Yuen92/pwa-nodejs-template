@@ -17,9 +17,13 @@ export const REGISTER_SERVICE_WORKER = 'REGISTER_SERVICE_WORKER';
 export const PAGE_INCREMENT = 'PAGE_INCREMENT';
 export const PROMPT_APP_INSTALL_BANNER = 'PROMPT_APP_INSTALL_BANNER';
 export const UPDATE_APP_INSTALL = 'UPDATE_APP_INSTALL';
+export const ADD_PAGE_ANIMATION = 'ADD_PAGE_ANIMATION';
 
 
 export const navigate = (path) => (dispatch, getState) => {
+  // Add Page Navigation after the first navigation
+  dispatch(addPageAnimation());
+
   // Extract the page name from path.
   const page = path === '/' ? 'home' : path.slice(1);
 
@@ -122,4 +126,8 @@ export const updateAppInstallStatus = (status) => (dispatch) => {
     type: UPDATE_APP_INSTALL,
     status
   })
+};
+
+export const addPageAnimation = () => (dispatch) => {
+  dispatch({ type: ADD_PAGE_ANIMATION })
 };

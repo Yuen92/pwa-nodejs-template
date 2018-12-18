@@ -164,11 +164,14 @@ class MyApp extends connect(store)(LitElement) {
 
       .page[active] {
         display: block;
+      }
+
+      .page.repeat-view[active] {
         -webkit-animation: fadeIn 1s;
         animation: fadeIn 1s;
       }
 
-      my-app-install.page[active] {
+      my-app-install.page.repeat-view[active] {
         -webkit-animation: fadeIn 1s,translate 500ms;
         animation: fadeIn 1s, translate 500ms;
       }
