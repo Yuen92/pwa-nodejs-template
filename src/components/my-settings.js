@@ -34,7 +34,7 @@ import '@polymer/paper-item/paper-icon-item.js';
 
 
 // these icons are needed by this elements
-import { chevronRight } from './my-icons.js';
+import { chevronRight } from '../data/my-icons.js';
 
 class MySettings extends connect(store)(PageViewElement) {
   render() {
@@ -89,7 +89,7 @@ class MySettings extends connect(store)(PageViewElement) {
 
   constructor() {
     super();
-    this._settings = [{icon: "", name: ""}];
+    this._settings = [];
   }
 
   firstUpdated() {

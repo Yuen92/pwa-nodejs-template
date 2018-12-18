@@ -29,7 +29,7 @@ import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-icon-item.js';
 
 // these icons are needed by this elements
-import { chevronRight, home, clearCache} from './my-icons.js';
+import { chevronRight, home, clearCache} from '../data/my-icons.js';
 
 class MyAppInstall extends connect(store) (PageViewElement) {
   render() {

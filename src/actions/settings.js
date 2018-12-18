@@ -1,3 +1,4 @@
+import { settings } from "../data/settings.js";
 export const LOAD_SETTINGS = 'LOAD_SETTINGS';
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';
 
@@ -9,8 +10,12 @@ export const loadSettings = () => async (dispatch, getState) => {
 }
 
 async function loadFile(name) {
-  var resp = await fetch(`/src/data/${name}.json`);
-  var data = await resp.json();
+  // Import static datas
+  var data = settings
+
+  // Request to server if dynamic datas
+  // var resp = await fetch(`../data/${name}.json`);
+  // var data = await resp.json();
   return {
     type: LOAD_SETTINGS,
     settings: data

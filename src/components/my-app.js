@@ -33,7 +33,7 @@ import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
-import { menuIcon } from './my-icons.js';
+import { menuIcon } from '../data/my-icons.js';
 import './snack-bar.js';
 
 class MyApp extends connect(store)(LitElement) {
@@ -227,7 +227,7 @@ class MyApp extends connect(store)(LitElement) {
         @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
         <a ?selected="${this._page === 'home'}" href="/home">Home</a>
-        <a ?selected="${this._page === 'settings' || this._page === 'app-install'}" href="/settings">Settings</a>
+        <a ?selected="${this._page === 'settings'}" href="/settings">Settings</a>
         <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
         <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
       </nav>
