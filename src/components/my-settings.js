@@ -10,6 +10,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+
+// This element is connected to the Redux store.
+import { store } from '../store.js';
+
+// These are the actions needed by this element.
+import { loadSettings } from '../actions/settings.js';
+
+// We are lazy loading its reducer.
+import settings from '../reducers/settings.js';
+store.addReducers({
+  settings
+});
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
@@ -19,10 +32,11 @@ import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-icon-item.js';
 
-// these icons are needed by this elements
-import { chevronRight, home, cloudDownload, locationOn, fullscreen, call, accountCircle, notifications } from './my-icons.js';
 
-class MySettings extends PageViewElement {
+// these icons are needed by this elements
+import { chevronRight } from './my-icons.js';
+
+class MySettings extends connect(store)(PageViewElement) {
   render() {
     return html`
       ${SharedStyles}
@@ -45,52 +59,45 @@ class MySettings extends PageViewElement {
       <section>
         <h1>Settings</h1>
         <paper-listbox>
-          <a href="/settings/app-install">
-            <paper-icon-item>
-              <div slot="item-icon">${home}</div>
-              <div style="flex: auto;">Application Install</div>
-              ${chevronRight}
-            </paper-icon-item>
-          </a>
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${cloudDownload}</div>
-            <div style="flex: auto;">Load All Screens</div>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${locationOn}</div>
-            Enable Location
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${fullscreen}</div>
-            Enable Fullscreen
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${call}</div>
-            Call
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${accountCircle}</div>
-            Auto Sign-in
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
-          <paper-icon-item>
-            <div slot="item-icon">${notifications}</div>
-            Enable Push Notifications
-            <span style="flex: auto;"></span>
-            ${chevronRight}
-          </paper-icon-item>
+          ${Object.keys(this._settings).map((key) => {
+            const item = this._settings[key];
+            const templateItem = html`
+              <paper-icon-item>
+                <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
+                ${item.name}
+                <span style="flex: auto;"></span>
+                ${chevronRight}
+              </paper-icon-item>
+            `;
+            const linkTemplate = html`
+              <a href=${item.href}>${templateItem}<a>
+            `;
+            return html`
+              ${typeof(item.href) != "undefined" ? linkTemplate : templateItem}
+            `;
+          })}
         </paper-listbox>
       </section>
     `;
+  }
+
+  static get properties() {
+    return {
+      _settings: Object
+    }
+  }
+
+  constructor() {
+    super();
+    this._settings = [{icon: "", name: ""}];
+  }
+
+  firstUpdated() {
+    store.dispatch(loadSettings());
+  }
+
+  stateChanged(state) {
+    this._settings = state.settings
   }
 }
 

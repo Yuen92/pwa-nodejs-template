@@ -4,8 +4,8 @@
   "description": "Amazing progressive web application which improves digital business using the latest web technology and data-driven model.",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#3f51b5",
-  "background_color": "#3f51b5",
+  "theme_color": "rgb(60, 80, 180)",
+  "background_color": "rgb(60, 80, 180)",
   "icons": [
     {
       "src": "images/manifest/icon-192x192.png",
