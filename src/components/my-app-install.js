@@ -71,6 +71,11 @@ class MyAppInstall extends connect(store) (PageViewElement) {
     `;
   }
 
+  constructor(){
+    super();
+    console.log(this)
+  }
+
   static get properties() {
     return {
       message: { type: String },

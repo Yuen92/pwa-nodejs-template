@@ -61,6 +61,23 @@ class MyApp extends connect(store)(LitElement) {
         --app-drawer-selected-color: #78909C;
       }
 
+      @-webkit-keyframes fadeIn {
+        from { opacity: 0 }
+          to { opacity: 1 }
+      }  
+      @keyframes fadeIn {
+          from { opacity: 0 }
+            to { opacity: 1 }
+      }
+      @-webkit-keyframes translate {
+        from { transform: translate(200px) }
+          to { transform: none }
+      }  
+      @keyframes translate {
+          from { transform: translate(200px) }
+            to { transform: none }
+      }
+
       app-header {
         position: fixed;
         top: 0;
@@ -147,6 +164,13 @@ class MyApp extends connect(store)(LitElement) {
 
       .page[active] {
         display: block;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      my-app-install.page[active] {
+        -webkit-animation: fadeIn 1s,translate 500ms;
+        animation: fadeIn 1s, translate 500ms;
       }
 
       footer {
