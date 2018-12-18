@@ -71,11 +71,6 @@ class MyAppInstall extends connect(store) (PageViewElement) {
     `;
   }
 
-  constructor(){
-    super();
-    console.log(this)
-  }
-
   static get properties() {
     return {
       message: { type: String },
@@ -94,7 +89,6 @@ class MyAppInstall extends connect(store) (PageViewElement) {
     }else{
       this.message = "Impossible to install the application. Clear cache is required."
     }
-    this._snackbarOpened = true
   }
 
   _clearCacheClicked(e) {

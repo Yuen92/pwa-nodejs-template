@@ -255,8 +255,7 @@ class MyApp extends connect(store)(LitElement) {
       _page: { type: String },
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
-      _offline: { type: Boolean },
-      _deferredPromptAvailable: { type: Boolean }
+      _offline: { type: Boolean }
     }
   }
 
@@ -269,12 +268,12 @@ class MyApp extends connect(store)(LitElement) {
     // Listen first user interaction
     this._listenFirstUserInteraction();
 
-    if(deferredPrompt){
-      store.dispatch(updateAppInstallStatus(true))
-    } else{
-      store.dispatch(updateAppInstallStatus(false))
-      window.addEventListener('beforeinstallprompt', store.dispatch(updateAppInstallStatus(false)));
-    }
+    // if(deferredPrompt){
+    //   store.dispatch(updateAppInstallStatus(true))
+    // } else{
+    //   store.dispatch(updateAppInstallStatus(false))
+    //   window.addEventListener('beforeinstallprompt', store.dispatch(updateAppInstallStatus(false)));
+    // }
   }
 
   firstUpdated() {
