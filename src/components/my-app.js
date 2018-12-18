@@ -70,8 +70,8 @@ class MyApp extends connect(store)(LitElement) {
             to { opacity: 1 }
       }
       @-webkit-keyframes translate {
-        from { transform: translate(200px) }
-          to { transform: none }
+        from { -webkit-transform: translate(200px) }
+          to { -webkit-transform: none }
       }  
       @keyframes translate {
           from { transform: translate(200px) }
@@ -268,12 +268,12 @@ class MyApp extends connect(store)(LitElement) {
     // Listen first user interaction
     this._listenFirstUserInteraction();
 
-    // if(deferredPrompt){
-    //   store.dispatch(updateAppInstallStatus(true))
-    // } else{
-    //   store.dispatch(updateAppInstallStatus(false))
-    //   window.addEventListener('beforeinstallprompt', store.dispatch(updateAppInstallStatus(false)));
-    // }
+    if(typeof(deferredPrompt) != "undefined") {
+      store.dispatch(updateAppInstallStatus(true));
+    } else{
+      store.dispatch(updateAppInstallStatus(false));
+      window.addEventListener('beforeinstallprompt', store.dispatch(updateAppInstallStatus(false)));
+    }
   }
 
   firstUpdated() {
