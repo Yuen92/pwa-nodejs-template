@@ -52,13 +52,13 @@ class MyApp extends connect(store)(LitElement) {
         --app-section-even-color: rgb(240, 240, 240);
         --app-section-odd-color: white;
 
-        --app-header-background-color: white;
-        --app-header-text-color: var(--app-dark-text-color);
+        --app-header-background-color: var(--app-drawer-background-color);
+        --app-header-text-color: var(--app-light-text-color);
         --app-header-selected-color: var(--app-primary-color);
 
         --app-drawer-background-color: var(--app-secondary-color);
         --app-drawer-text-color: var(--app-light-text-color);
-        --app-drawer-selected-color: #78909C;
+        --app-drawer-selected-color: rgb(120, 145, 155);
       }
 
       @-webkit-keyframes fadeIn {
