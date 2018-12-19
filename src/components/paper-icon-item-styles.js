@@ -14,6 +14,7 @@ export const PaperIconItemStyles = html`
 <custom-style>
   <style is="custom-style">
     paper-icon-item {
+      margin: 10px auto;
       cursor: pointer;
       color: rgb(0, 155, 230);
       --paper-item-focused: {
@@ -25,13 +26,16 @@ export const PaperIconItemStyles = html`
       --paper-item-focused-before: {
         background: none;
       }
-      margin: 10px;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     }
 
     paper-icon-item[disabled]{
       color: grey;
       background: rgb(210, 220, 220);
+    }
+
+    paper-icon-item[disabled] > div {
+      text-decoration: line-through;
     }
 
     paper-icon-item:hover {

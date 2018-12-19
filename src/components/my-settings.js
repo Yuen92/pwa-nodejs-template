@@ -1,13 +1,3 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
@@ -29,7 +19,6 @@ import { SharedStyles } from './shared-styles.js';
 import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 
 // These are the elements needed by this element.
-import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-item/paper-icon-item.js';
 
 
@@ -47,6 +36,17 @@ class MySettings extends connect(store)(PageViewElement) {
             padding-left: 0px;
             padding-right: 0px;
           }
+          a {
+            transform: translate(-16px);
+            display: block;
+            margin: 10px auto;
+            padding: 0px 16px;
+          }
+          /* Align with paper-icon-item*/
+          a paper-icon-item {
+            width: 100%;
+            padding: 0 16px;
+          }
           /* vertical-align is used for iPhone */
           svg {
             fill: currentColor;
@@ -58,25 +58,23 @@ class MySettings extends connect(store)(PageViewElement) {
       </custom-style>
       <section>
         <h1>Settings</h1>
-        <paper-listbox>
-          ${Object.keys(this._settings).map((key) => {
-            const item = this._settings[key];
-            const templateItem = html`
-              <paper-icon-item>
-                <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
-                ${item.name}
-                <span style="flex: auto;"></span>
-                ${chevronRight}
-              </paper-icon-item>
-            `;
-            const linkTemplate = html`
-              <a href=${item.href}>${templateItem}<a>
-            `;
-            return html`
-              ${typeof(item.href) != "undefined" ? linkTemplate : templateItem}
-            `;
-          })}
-        </paper-listbox>
+        ${Object.keys(this._settings).map((key) => {
+          const item = this._settings[key];
+          const templateItem = html`
+            <paper-icon-item>
+              <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
+              ${item.name}
+              <span style="flex: auto;"></span>
+              ${chevronRight}
+            </paper-icon-item>
+          `;
+          const linkTemplate = html`
+            <a href=${item.href}>${templateItem}</a>
+          `;
+          return html`
+            ${typeof(item.href) != "undefined" ? linkTemplate : templateItem}
+          `;
+        })}
       </section>
     `;
   }
