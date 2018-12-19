@@ -71,17 +71,16 @@ const app = (state = INITIAL_STATE, action) => {
         pageCounter: state.pageCounter + 1
       };
     case PROMPT_APP_INSTALL_BANNER:
-      console.log("PROMPT_APP_INSTALL_BANNER")
       var result = false;
-      if(deferredPrompt){
+      if(typeof(deferredPrompt) != "undefined"){
         deferredPrompt.prompt();
         // Wait for the user to respond to the prompt
         deferredPrompt.userChoice
           .then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted the A2HS prompt');
+              // User accepted the A2HS prompt
             } else {
-              console.log('User dismissed the A2HS prompt');
+              // User dismissed the A2HS prompt
             }
             deferredPrompt = null;
           });
@@ -95,9 +94,22 @@ const app = (state = INITIAL_STATE, action) => {
         promptAppInstallBanner: result
       };
     case UPDATE_APP_INSTALL:
+      var result = action.status;
+      if(typeof(deferredPrompt) != "undefined"){
+        if(!result){
+          console.log("UPDATE_APP_INSTALL to false whereas deferredPrompt is defined.");
+        }
+        result = true;
+      } else{
+        if(result){
+          console.log("UPDATE_APP_INSTALL to true whereas deferredPrompt is undefined.");
+          alert("Sorry there is a bug we must handle.")
+        }
+        result = false;
+      }
       return {
         ...state,
-        appInstallAvailable: action.status
+        appInstallAvailable: result
       };
     case ADD_PAGE_ANIMATION:
       var result = false

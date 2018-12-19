@@ -18,7 +18,7 @@ import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 import '@polymer/paper-item/paper-icon-item.js';
 
 // these icons are needed by this elements
-import { chevronRight, home, clearCache} from '../data/my-icons.js';
+import { chevronRight, home, help} from '../data/my-icons.js';
 
 class MyAppInstall extends connect(store) (PageViewElement) {
   render() {
@@ -48,19 +48,17 @@ class MyAppInstall extends connect(store) (PageViewElement) {
             ${chevronRight}
           </paper-icon-item>
           </paper-icon-item>
-          <paper-icon-item @click="${this._clearCacheClicked}">
-            <div slot="item-icon">${clearCache}</div>
-            <div style="flex: auto;">Clear Cache</div>
+          <paper-icon-item @click="${this._featureInDevelopment}">
+            <div slot="item-icon">${help}</div>
+            <div style="flex: auto;">Help - Enable Feature</div>
             ${chevronRight}
           </paper-icon-item>
       </section>
-      <snack-bar ?active="${this._appInstallAvailable}">${this.message}</snack-bar>
     `;
   }
 
   static get properties() {
     return {
-      message: { type: String },
       _appInstallAvailable: { type: Boolean }
     }
   }
@@ -71,15 +69,10 @@ class MyAppInstall extends connect(store) (PageViewElement) {
 
   _appInstallClicked(e) {
     store.dispatch(promptAppInstallBanner());
-    if(deferredPrompt){
-      this.message = "Prompt the app install banner."
-    }else{
-      this.message = "Impossible to install the application. Clear cache is required."
-    }
   }
 
-  _clearCacheClicked(e) {
-    window.location.reload(true)
+  _featureInDevelopment(e) {
+    alert("Feature in development.")
   }
 }
 

@@ -275,7 +275,11 @@ class MyApp extends connect(store)(LitElement) {
       store.dispatch(updateAppInstallStatus(true));
     } else{
       store.dispatch(updateAppInstallStatus(false));
-      window.addEventListener('beforeinstallprompt', store.dispatch(updateAppInstallStatus(false)));
+      window.ddti = {}
+      window.ddti._updateAppInstallStatus = function(){
+        store.dispatch(updateAppInstallStatus(true))
+      }
+      window.addEventListener('beforeinstallprompt', window.ddti._updateAppInstallStatus);
     }
   }
 

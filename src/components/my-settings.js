@@ -63,8 +63,7 @@ class MySettings extends connect(store)(PageViewElement) {
           const templateItem = html`
             <paper-icon-item>
               <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
-              ${item.name}
-              <span style="flex: auto;"></span>
+              <div style="flex: auto;">${item.name}</div>
               ${chevronRight}
             </paper-icon-item>
           `;
