@@ -22,13 +22,9 @@
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.0",
-    "@polymer/font-roboto": "^3.0.2",
-    "@polymer/font-roboto-local": "^3.0.2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/lit-element": "^0.6.5",
-    "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-item": "^3.0.1",
-    "@polymer/paper-listbox": "^3.0.1",
     "@polymer/polymer": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "pwa-helpers": "^0.9.0",
