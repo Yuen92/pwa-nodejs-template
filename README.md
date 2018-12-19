@@ -40,6 +40,21 @@ This app provide the server-push using :
 
 
 ## TODOs
+### Workaround for app-header for A2HS on iPhone
+On the inline style of the <app-header> we must apply this style :
+> transform: translateY(-50px);
+> padding-top: 50px;
+
+Replace in the file [app-header.js](https://github.com/PolymerElements/app-layout/blob/master/app-header/app-header.js) :
+> this.translate3d(0, (-y) + 'px', 0);
+by
+> this.translate3d(0, (-y) -50 + 'px', 0);
+
+In the same file [app-header.js](https://github.com/PolymerElements/app-layout/blob/master/app-header/app-header.js) add to the style :
+> :host{}
+this rules :
+> padding-top: 50px;
+
 ### Workaround failed - Fix fonts.googleapis.com dependency from paper-styles used by paper-item
 Replace [font-roboto](https://github.com/PolymerElements/font-roboto) by [font-roboto-local](https://github.com/PolymerElements/font-roboto-local)
 Install [font-roboto-local](https://github.com/PolymerElements/font-roboto-local) :

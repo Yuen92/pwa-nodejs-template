@@ -86,7 +86,11 @@ class MyApp extends connect(store)(LitElement) {
         text-align: center;
         background-color: var(--app-header-background-color);
         color: var(--app-header-text-color);
-        border-bottom: 1px solid #eee;
+        
+        /* Workaround for standalone install application on iOS */
+        /* Look Read Me */
+        /* transform: translateY(-50px); */
+        /* padding-top: 50px; */
       }
 
       .toolbar-top {
@@ -151,6 +155,7 @@ class MyApp extends connect(store)(LitElement) {
       /* Workaround for IE11 displaying <main> as inline */
       main {
         display: block;
+        background: white;
       }
 
       .main-content {
