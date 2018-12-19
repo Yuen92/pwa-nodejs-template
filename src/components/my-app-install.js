@@ -41,7 +41,7 @@ class MyAppInstall extends connect(store) (PageViewElement) {
         </style>
       </custom-style>
       <section>
-        <h1>Settings</h1>
+        <h1>Help - A2HS</h1>
           <paper-icon-item @click="${this._appInstallClicked}" ?disabled="${!this._appInstallAvailable}">
             <div slot="item-icon">${home}</div>
             <div style="flex: auto;">Application Install</div>

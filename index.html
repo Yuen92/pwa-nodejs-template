@@ -1,13 +1,3 @@
-<!--
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +5,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <title>Data-Driven Technological Innovations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Amazing progressive web application which improves digital business using the latest web technology and data-driven model.">
+    <meta name="author" content="Thomas Bianconi">
 
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
@@ -34,11 +25,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- See https://goo.gl/qRE0vM -->
     <meta name="theme-color" content="#3f51b5">
 
-    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <!-- (A2HS) Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="DDTI">
 
-    <!-- Add to homescreen for Safari on iOS -->
+    <!-- (A2HS) Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DDTI">
@@ -63,7 +54,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta property="og:image" content="images/manifest/icon-144x144.png" />
 
     <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin> -->
+    <!-- Dependancy from app-drawer -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
     
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" async></script>
@@ -96,17 +89,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
+      /* Dependancy from app-drawer*/
       @font-face {
         font-family: 'Pacifico';
         font-style: normal;
         font-weight: 400;
-        src: local('Pacifico Regular'), local('Pacifico-Regular');
-        /* The browser draws the text immediately in the fallback font if the font
+        src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+        font-display: swap;
+      }
+      /* The browser draws the text immediately in the fallback font if the font
            isn't loaded, then swaps it with the webfont when it eventually loads
            See: https://developers.google.com/web/updates/2016/02/font-display
         */
-        font-display: swap;
-      }
+
       body {
         margin: 0; 
         /* This is a font-stack that tries to use the system-default sans-serifs first */
