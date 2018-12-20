@@ -40,6 +40,13 @@ app.get(["/robots.txt"],
   }
 );
 
+app.get(["/sitemap.xml"],
+  function ( request, response, next ) {
+    response.set('Content-Type', 'application/xhtml+xml; charset=UTF-8');
+    response.sendFile(request.url , { root : __dirname});
+  }
+);
+
 // Use prpl-server as library https://github.com/Polymer/prpl-server#as-a-library
 let polyConfigFile = require("./build/polymer.json");
 app.get('/*', prpl.makeHandler('./build', polyConfigFile));
