@@ -19,6 +19,7 @@ class MyHome extends PageViewElement {
           }
           article.secondary {
             padding: 20px 0px;
+            border-top: 1px solid black;
           }
           aside {
             font-size: 12px;
@@ -52,21 +53,21 @@ class MyHome extends PageViewElement {
         <article>
           <h2>Basic Best Practices</h2>
           <p>
-            Because it's always good to remember the basics, below the minimum checklist :
+            Because it's always good to remember the basics, below the minimum checklist:
           </p>
           <ul>
-            <li><b>User Friendly :</b> Build a good mobile experience using a responsive layout.</li>
-            <li><b>Smooth Running :</b> Loading fast and quick response or people will leave before to see your content.</li>
-            <li><b>Strong Popularity :</b> Easy to find on search engines as well as on social networks or specialized websites</li>
+            <li><b>User Friendly:</b> Build a good mobile experience using a responsive layout.</li>
+            <li><b>Smooth Running:</b> Loading fast and quick response or people will leave before to see your content.</li>
+            <li><b>Strong Popularity:</b> Easy to find on search engines as well as on social networks or specialized websites</li>
           </ul>
         </article>
         <aside>
           <p>
-            <b>User Friendly :</b> Responsive layout is related to the Responsive Web Design originally designed by <a href="http://alistapart.com/article/responsive-web-design/">Ethan Marcotte in A List
+            <b>User Friendly:</b> Responsive layout is related to the Responsive Web Design originally designed by <a href="http://alistapart.com/article/responsive-web-design/">Ethan Marcotte in A List
             Apart</a>
           </p>
           <p>
-            <b>Smooth Running :</b> See resources <a href="https://soasta.com/blog/google-mobile-web-performance-study/">SOASTA Google study report related to "Mobile Load Time and User Abandonment"</a>
+            <b>Smooth Running:</b> See resources <a href="https://soasta.com/blog/google-mobile-web-performance-study/">SOASTA Google study report related to "Mobile Load Time and User Abandonment"</a>
           </p>
         </aside>
       </section>
@@ -75,7 +76,7 @@ class MyHome extends PageViewElement {
           <h2>Latest Features</h2>
           <p>
             The latest features make it easy to engage the users and build a strong relationship with them.
-            "<a href="/">Data-Driven Technological Innovations</a>" uses all of these features :
+            "<a href="/">Data-Driven Technological Innovations</a>" uses all of these features:
           </p>
           <ul>
             <li>Usage in offline mode to use it everywhere and anytime</li>
@@ -89,7 +90,7 @@ class MyHome extends PageViewElement {
           <h2>Technological Innovations</h2>
           <p>
             The technological innovations allow to support these latest features and provide the best user experience.
-            "<a href="/">Data-Driven Technological Innovations</a>" uses these technological innovations :
+            "<a href="/">Data-Driven Technological Innovations</a>" uses these technological innovations:
           </p>
           <ul>
             <li>Response Animation Idle Load model (RAIL)</li>
