@@ -38,6 +38,11 @@ export const SharedStyles = html`
     color: var(--app-dark-text-color);
   }
 
+  h3 {
+    color: var(--app-dark-text-color);
+  }
+
+
   @media (min-width: 460px) {
     h1 {
       font-size: 36px;

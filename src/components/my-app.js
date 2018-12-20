@@ -1,13 +1,3 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
 import { LitElement, html } from '@polymer/lit-element';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
@@ -176,6 +166,7 @@ class MyApp extends connect(store)(LitElement) {
         animation: fadeIn 1s;
       }
 
+      /* Animation Entry*/
       my-app-install.page.repeat-view[active] {
         -webkit-animation: fadeIn 1s,translate 500ms;
         animation: fadeIn 1s, translate 500ms;
@@ -222,8 +213,8 @@ class MyApp extends connect(store)(LitElement) {
       <nav class="toolbar-list">
         <a ?selected="${this._page === 'home'}" href="/home">Home</a>
         <a ?selected="${this._page === 'settings' || this._page === 'app-install'}" href="/settings">Settings</a>
-        <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
-        <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
+        <a ?selected="${this._page === 'counter'}" href="/counter">Counter</a>
+        <a ?selected="${this._page === 'shopping'}" href="/shopping">Shopping</a>
       </nav>
     </app-header>
 
@@ -233,8 +224,8 @@ class MyApp extends connect(store)(LitElement) {
       <nav class="drawer-list">
         <a ?selected="${this._page === 'home'}" href="/home">Home</a>
         <a ?selected="${this._page === 'settings'}" href="/settings">Settings</a>
-        <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
-        <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
+        <a ?selected="${this._page === 'counter'}" href="/counter">Counter</a>
+        <a ?selected="${this._page === 'shopping'}" href="/shopping">Shopping</a>
       </nav>
     </app-drawer>
 
@@ -243,13 +234,13 @@ class MyApp extends connect(store)(LitElement) {
       <my-home class="page" ?active="${this._page === 'home'}"></my-home>
       <my-settings class="page" ?active="${this._page === 'settings'}"></my-settings>
       <my-app-install class="page" ?active="${this._page === 'app-install'}"></my-app-install>
-      <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
-      <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
+      <my-counter class="page" ?active="${this._page === 'counter'}"></my-counter>
+      <my-shopping class="page" ?active="${this._page === 'shopping'}"></my-shopping>
       <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
     </main>
 
     <footer>
-      <p>Made with &hearts; thanks Polymer contributors</p>
+      <p>Made with &hearts; for performance</p>
     </footer>
 
     <snack-bar ?active="${this._snackbarOpened}">
