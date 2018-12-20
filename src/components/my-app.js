@@ -167,7 +167,8 @@ class MyApp extends connect(store)(LitElement) {
       }
 
       /* Animation Entry*/
-      my-app-install.page.repeat-view[active] {
+      my-app-install.page.repeat-view[active],
+      my-staging.page.repeat-view[active] {
         -webkit-animation: fadeIn 1s,translate 500ms;
         animation: fadeIn 1s, translate 500ms;
       }
@@ -236,6 +237,7 @@ class MyApp extends connect(store)(LitElement) {
       <my-app-install class="page" ?active="${this._page === 'app-install'}"></my-app-install>
       <my-counter class="page" ?active="${this._page === 'counter'}"></my-counter>
       <my-shopping class="page" ?active="${this._page === 'shopping'}"></my-shopping>
+      <my-staging class="page" ?active="${this._page === 'staging'}"></my-staging>
       <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
     </main>
 

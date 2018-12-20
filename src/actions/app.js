@@ -45,6 +45,16 @@ const loadPage = (page) => (dispatch) => {
       import('../components/my-app-install.js').then((module) => {
       });
       break;
+    case 'settings/app-install/help-a2hs-android-windows':
+      page = "staging";
+      import('../components/my-staging.js').then((module) => {
+      });
+      break;
+    case 'settings/app-install/help-a2hs-ios':
+      page = "staging";
+      import('../components/my-staging.js').then((module) => {
+      });
+      break;
     case 'counter':
       import('../components/my-counter.js');
       break;

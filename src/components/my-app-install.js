@@ -17,8 +17,9 @@ import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 // These are the elements needed by this element.
 import '@polymer/paper-item/paper-icon-item.js';
 
-// these icons are needed by this elements
+// these datas are needed by this elements
 import { chevronRight, home, help} from '../data/my-icons.js';
+import { appInstallMinimum } from "../data/app-install.js";
 
 class MyAppInstall extends connect(store) (PageViewElement) {
   render() {
@@ -31,6 +32,17 @@ class MyAppInstall extends connect(store) (PageViewElement) {
             padding-left: 0px;
             padding-right: 0px;
           }
+          a {
+            transform: translate(-16px);
+            display: block;
+            margin: 10px auto;
+            padding: 0px 16px;
+          }
+          /* Align with paper-icon-item*/
+          a paper-icon-item {
+            width: 100%;
+            padding: 0 16px;
+          }
           /* vertical-align is used for iPhone */
           svg {
             fill: currentColor;
@@ -42,32 +54,44 @@ class MyAppInstall extends connect(store) (PageViewElement) {
       </custom-style>
       <section>
         <h1>Help - A2HS</h1>
-          <paper-icon-item @click="${this._appInstallClicked}" ?disabled="${!this._appInstallAvailable}">
-            <div slot="item-icon">${home}</div>
-            <div style="flex: auto;">Application Install</div>
-            ${chevronRight}
-          </paper-icon-item>
-          </paper-icon-item>
-          <paper-icon-item @click="${this._featureInDevelopment}">
-            <div slot="item-icon">${help}</div>
-            <div style="flex: auto;">Help - Enable Feature</div>
-            ${chevronRight}
-          </paper-icon-item>
+          ${Object.keys(this._datas).map((key) => {
+            const item = this._datas[key];
+            const disabled = item.beforeinstallpromptImplemented ? !this._appInstallAvailable : this._appInstallAvailable;
+            const templateItem = html`
+              <paper-icon-item @click="${item.promptAppInstallBanner ? this._promptAppInstallBanner : false}" ?disabled="${disabled}">
+                <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
+                <div style="flex: auto;">${item.name}</div>
+                ${item.promptAppInstallBanner ? "" : chevronRight}
+              </paper-icon-item>
+            `;
+            const linkTemplate = html`
+              <a  href=${item.href}>${templateItem}</a>
+            `;
+            return html`
+              ${(typeof(item.href) != "undefined" && !disabled) ? linkTemplate : templateItem}
+            `;
+          })}
       </section>
     `;
   }
 
   static get properties() {
     return {
+      _datas : {type: Object },
       _appInstallAvailable: { type: Boolean }
     }
+  }
+
+  constructor(){
+    super();
+    this._datas = appInstallMinimum
   }
 
   stateChanged(state) {
     this._appInstallAvailable = state.app.appInstallAvailable;
   }
 
-  _appInstallClicked(e) {
+  _promptAppInstallBanner(e) {
     store.dispatch(promptAppInstallBanner());
   }
 
