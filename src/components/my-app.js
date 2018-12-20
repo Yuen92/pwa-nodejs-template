@@ -74,7 +74,7 @@ class MyApp extends connect(store)(LitElement) {
         left: 0;
         width: 100%;
         text-align: center;
-        background: linear-gradient(315deg, var(--app-header-background-color) 0%, black 100%);
+        background: var(--app-header-background-color);
         color: var(--app-header-text-color);
         
         /* Workaround for standalone install application on iOS */
@@ -84,7 +84,7 @@ class MyApp extends connect(store)(LitElement) {
       }
 
       .toolbar-top {
-        background: linear-gradient(315deg, var(--app-header-background-color) 0%, black 100%);
+        background: var(--app-header-background-color);
       }
 
       [main-title] {
@@ -175,7 +175,7 @@ class MyApp extends connect(store)(LitElement) {
 
       footer {
         padding: 24px;
-        background: linear-gradient(315deg, black 0%, var(--app-header-background-color) 100%);
+        background: var(--app-header-background-color);
         color: var(--app-drawer-text-color);
         text-align: center;
       }
