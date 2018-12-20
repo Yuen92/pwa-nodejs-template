@@ -32,6 +32,15 @@ export const SharedStyles = html`
     color: var(--app-dark-text-color);
   }
 
+  h1 > a, h2 > a, h3 > a {
+    color: var(--app-dark-text-color);
+  }
+
+  a {
+    font-weight: bold;
+    color: var(--app-primary-color);
+  }
+
 
   @media (min-width: 460px) {
     h1 {

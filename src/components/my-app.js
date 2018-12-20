@@ -37,9 +37,17 @@ class MyApp extends connect(store)(LitElement) {
 
         --app-primary-color: rgb(0, 155, 230);
         --app-secondary-color: rgb(40, 50, 55);
+        --app-third-color: rgb(0, 135, 125);
+        --app-fourth-color: rgb(240, 240, 240);
+        --app-fifth-color: rgb(120, 145, 155);
+        --app-sixth-color: rgb(225, 240, 240);
+        --app-seventh-color: rgb(195, 230, 250);
+        --app-eighth-color: rgb(210, 220, 220);
+
         --app-dark-text-color: var(--app-secondary-color);
         --app-light-text-color: white;
-        --app-section-even-color: rgb(240, 240, 240);
+        --app-light-secondary-text-color: var(--app-fifth-color);
+        --app-section-even-color: var(--app-fourth-color);
         --app-section-odd-color: white;
 
         --app-header-background-color: var(--app-drawer-background-color);
@@ -48,7 +56,7 @@ class MyApp extends connect(store)(LitElement) {
 
         --app-drawer-background-color: var(--app-secondary-color);
         --app-drawer-text-color: var(--app-light-text-color);
-        --app-drawer-selected-color: rgb(120, 145, 155);
+        --app-drawer-selected-color: var(--app-light-secondary-text-color);
       }
 
       @-webkit-keyframes fadeIn {

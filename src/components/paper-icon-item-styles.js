@@ -13,12 +13,29 @@ import { html } from '@polymer/lit-element';
 export const PaperIconItemStyles = html`
 <custom-style>
   <style is="custom-style">
+    @-webkit-keyframes hoverFromNormal {
+      from { box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); }
+        to { box-shadow: 0 5px 5px 0 rgba(0,0,0,.26); }
+    }  
+    @keyframes hoverFromNormal {
+        from { box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); }
+          to { box-shadow: 0 5px 5px 0 rgba(0,0,0,.26); }
+    }  
+    @-webkit-keyframes normalFromHover {
+      from { box-shadow: 0 5px 5px 0 rgba(0,0,0,.26); }
+        to { box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); }
+    }  
+    @keyframes normalFromHover {
+        from { box-shadow: 0 5px 5px 0 rgba(0,0,0,.26); }
+          to { box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); }
+    }  
+
     paper-icon-item {
       margin: 10px auto;
       cursor: pointer;
-      color: rgb(0, 155, 230);
+      color: var(--app-primary-color);
       --paper-item-focused: {
-        background: rgb(195, 230, 250);
+        background: var(--app-seventh-color);
       };
       --paper-item-selected: {
         /* background: rgb(225, 245, 250) */
@@ -27,11 +44,12 @@ export const PaperIconItemStyles = html`
         background: none;
       }
       box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+      animation: normalFromHover 500ms;
     }
 
     paper-icon-item[disabled]{
-      color: grey;
-      background: rgb(210, 220, 220);
+      color: var(--app-fifth-color);
+      background: var(--app-eighth-color)
     }
 
     paper-icon-item[disabled] > div {
@@ -39,11 +57,13 @@ export const PaperIconItemStyles = html`
     }
 
     paper-icon-item:hover {
-      background: rgb(225, 245, 250);
+      background: var(--app-sixth-color);
+      box-shadow: 0px 5px 5px 0px rgba(0,0,0,.26);
+      animation: hoverFromNormal 500ms;
     }
 
     paper-icon-item:active {
-      background: rgb(195, 230, 250);
+      background: var(--app-seventh-color);
     }
 
     @media screen and (max-width: 600px) {
@@ -52,7 +72,7 @@ export const PaperIconItemStyles = html`
       }
       
       paper-icon-item:focus, paper-icon-item:hover:focus {
-        background: rgb(195, 230, 250);
+        background: var(--app-seventh-color);
       }
 
       paper-icon-item:hover {
