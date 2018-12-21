@@ -39,40 +39,55 @@ This app provide the server-push using :
 [Redux](https://redux.js.org/) is a small state management container, that is view agnostic and widely used. It is centered around the idea of separating your application logic (the application state) from your view layer, and having the store as a single source of truth for the application state.
 
 
-## TODOs
-### Workaround for app-header for A2HS on iPhone
+# TODOs
+
+# Workaround for app-header for A2HS on iPhone
 On the inline style of the <app-header> we must apply this style :
 > transform: translateY(-50px);
 > padding-top: 50px;
 
 Replace in the file [app-header.js](https://github.com/PolymerElements/app-layout/blob/master/app-header/app-header.js) :
 > this.translate3d(0, (-y) + 'px', 0);
+
 by
 > this.translate3d(0, (-y) -50 + 'px', 0);
 
 In the same file [app-header.js](https://github.com/PolymerElements/app-layout/blob/master/app-header/app-header.js) add to the style :
 > :host{}
+
 this rules :
 > padding-top: 50px;
 
-### Workaround failed - Fix fonts.googleapis.com dependency from paper-styles used by paper-item
-Replace [font-roboto](https://github.com/PolymerElements/font-roboto) by [font-roboto-local](https://github.com/PolymerElements/font-roboto-local)
-Install [font-roboto-local](https://github.com/PolymerElements/font-roboto-local) :
-> npm install --save @polymer/font-roboto-local
+To provide a pull-request for this improvement.
 
-In the file [typography.js](https://github.com/PolymerElements/paper-styles/blob/master/typography.js) comment :
-> //import '@polymer/font-roboto/roboto.js';
+# Use link preload in service worker response
 
-and add :
-> import '@polymer/font-roboto-local/roboto.js';
+Modify the file "service-worker.js" in all build repository :
+> /server/build/es5-bundled/service-worker.js
 
-In the file [paper-styles/.../package.json](https://github.com/PolymerElements/paper-styles/blob/master/package.json) change dependancy, replace :
-> "@polymer/font-roboto": "^3.0.1",
+> /server/build/es6-bundled/service-worker.js
 
-by :
-> "@polymer/font-roboto-local": "^3.0.2",
+> /server/build/esm-bundled/service-worker.js
 
-Related to this open issue : [Remove roboto dependency from paper-styles](https://github.com/PolymerElements/paper-styles/pull/128#issuecomment-447400852)
+Replace (line 247):
+> if (response) {
 
-### Use Template Style
-### Load icons needed only - remove import '@polymer/iron-icons/iron-icons.js';
+>   return response;
+
+> }
+
+by the content of the file 
+> /hot_fix/service-worker-manual-change.js
+
+Very pain full ! Fork the project [GoogleChromeLabs/sw-precache](https://github.com/GoogleChromeLabs/sw-precache) and provide a pull request to automated this based on the push-manifest.json file configuration from [Polymer/prpl-server#as-a-library](https://github.com/Polymer/prpl-server#as-a-library)
+
+# Improvements
+
+- [x] Remove Google domain dependency for fonts
+> <script>window.polymerSkipLoadingFontRoboto = true;</script>
+
+- [x] Fix app-drawer bug on iPhone when application used in standalone
+- [ ] Pull request to do in [PolymerElements/app-layout](https://github.com/PolymerElements/app-layout) :
+- [x] Use link preload when service worker should response
+- [ ] Pull request to do in [GoogleChromeLabs/sw-precache](https://github.com/GoogleChromeLabs/sw-precache)
+- [ ] Use the [navigation-preload](https://developers.google.com/web/updates/2017/02/navigation-preload) in service-worker
