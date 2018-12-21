@@ -6,13 +6,13 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../store.js';
 
 // These are the actions needed by this element.
-import { loadSettings } from '../actions/settings.js';
+// import { loadSettings } from '../actions/settings.js';
 
 // We are lazy loading its reducer.
-import settings from '../reducers/settings.js';
-store.addReducers({
-  settings
-});
+// import settings from '../reducers/settings.js';
+// store.addReducers({
+//   settings
+// });
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
@@ -25,7 +25,7 @@ import '@polymer/paper-item/paper-icon-item.js';
 // these icons are needed by this elements
 import { chevronRight } from '../data/my-icons.js';
 
-class MySettings extends connect(store)(PageViewElement) {
+class MyLoadScreens extends connect(store)(PageViewElement) {
   render() {
     return html`
       ${SharedStyles}
@@ -58,12 +58,13 @@ class MySettings extends connect(store)(PageViewElement) {
       </custom-style>
       <section>
         <h1>Settings</h1>
-        ${Object.keys(this._settings).map((key) => {
-          const item = this._settings[key];
+        ${Object.keys(this._screensCached).map((key) => {
+          const this1 = this;
+          const item = this._screensCached[key];
           const templateItem = html`
-            <paper-icon-item>
+            <paper-icon-item @click="${() => this1._loadScreen(item)}">
               <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
-              <div style="flex: auto;">${item.name}</div>
+              <div style="flex: auto;">${item.url}</div>
               ${chevronRight}
             </paper-icon-item>
           `;
@@ -80,22 +81,54 @@ class MySettings extends connect(store)(PageViewElement) {
 
   static get properties() {
     return {
-      _settings: Object
+      _screensCached: Object
     }
   }
 
   constructor() {
     super();
-    this._settings = []
+    this._screensCached = [];
   }
 
   firstUpdated() {
-    store.dispatch(loadSettings());
+    //store.dispatch(loadSettings());
+    this._logFilesFromCaches()
   }
 
   stateChanged(state) {
-    this._settings = state.settings
+    //this._screensCached = state._screensCached
+  }
+
+  _loadScreen(item){
+    console.log(item);
+    console.log("update the file : " + item.url);
+  }
+
+  _logFilesFromCaches () {
+    var this1 = this;
+    window.caches.keys().then(function(cacheNames) {
+      cacheNames.forEach(function(cacheName) {
+        var this2 = this1;
+        window.caches.open(cacheName).then(function(cache) {
+          return cache.keys();
+        }).then(function(requests) {
+          requests.forEach(function(request) {
+            if(/\/src\/components/.test(request.url) && !/my-app\.js/.test(request.url)){
+              this2._updateScreens(request)
+            }
+          });
+          return requests;
+        });
+      });
+      return cacheNames;
+    });
+  }
+
+  _updateScreens(request){
+    this._screensCached.push(request);
+    this.update(this._screensCached);
+    console.log(this._screensCached);
   }
 }
 
-window.customElements.define('my-settings', MySettings);
+window.customElements.define('my-load-screens', MyLoadScreens);

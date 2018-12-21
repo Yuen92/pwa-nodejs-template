@@ -243,6 +243,7 @@ class MyApp extends connect(store)(LitElement) {
       <my-home class="page" ?active="${this._page === 'home'}"></my-home>
       <my-settings class="page" ?active="${this._page === 'settings'}"></my-settings>
       <my-app-install class="page" ?active="${this._page === 'app-install'}"></my-app-install>
+      <my-load-screens class="page" ?active="${this._page === 'load-screens'}"></my-load-screens>
       <my-counter class="page" ?active="${this._page === 'counter'}"></my-counter>
       <my-shopping class="page" ?active="${this._page === 'shopping'}"></my-shopping>
       <my-staging class="page" ?active="${this._page === 'staging'}"></my-staging>

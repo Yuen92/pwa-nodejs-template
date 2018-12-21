@@ -55,6 +55,11 @@ const loadPage = (page) => (dispatch) => {
       import('../components/my-staging.js').then((module) => {
       });
       break;
+    case 'settings/load-screens':
+      page = "load-screens";
+      import('../components/my-load-screens.js').then((module) => {
+      });
+      break;
     case 'counter':
       import('../components/my-counter.js');
       break;
