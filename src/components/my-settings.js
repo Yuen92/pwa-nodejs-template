@@ -61,7 +61,7 @@ class MySettings extends connect(store)(PageViewElement) {
         ${Object.keys(this._settings).map((key) => {
           const item = this._settings[key];
           const templateItem = html`
-            <paper-icon-item>
+            <paper-icon-item @click="${item.iconName == "cloudDownload" ? this._logFilesFromCaches : false}">
               <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
               <div style="flex: auto;">${item.name}</div>
               ${chevronRight}
@@ -80,13 +80,15 @@ class MySettings extends connect(store)(PageViewElement) {
 
   static get properties() {
     return {
-      _settings: Object
+      _settings: Object,
+      _pagesCached: Object
     }
   }
 
   constructor() {
     super();
     this._settings = [];
+    this._pagesCached = [];
   }
 
   firstUpdated() {
@@ -95,6 +97,31 @@ class MySettings extends connect(store)(PageViewElement) {
 
   stateChanged(state) {
     this._settings = state.settings
+  }
+
+  _logFilesFromCaches () {
+    var this1 = this;
+    window.caches.keys().then(function(cacheNames) {
+      cacheNames.forEach(function(cacheName) {
+        var this2 = this1;
+        window.caches.open(cacheName).then(function(cache) {
+          return cache.keys();
+        }).then(function(requests) {
+          requests.forEach(function(request) {
+            if(/\/src\/components/.test(request.url) && !/my-app\.js/.test(request.url)){
+              this2._log(request)
+            }
+          });
+          return requests;
+        });
+      });
+      return cacheNames;
+    });
+  }
+
+  _log(request){
+    this._pagesCached.push(request)
+    console.log(this._pagesCached)
   }
 }
 
