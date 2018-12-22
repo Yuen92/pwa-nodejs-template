@@ -62,14 +62,14 @@ class MyLoadScreens extends connect(store)(PageViewElement) {
           const this1 = this;
           const item = this._screensCached[key];
           const templateItem = html`
-            <paper-icon-item @click="${() => this1._loadScreen(item)}">
+            <paper-icon-item role="none" @click="${() => this1._loadScreen(item)}">
               <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
               <div style="flex: auto;">${item.url}</div>
               ${chevronRight}
             </paper-icon-item>
           `;
           const linkTemplate = html`
-            <a href=${item.href}>${templateItem}</a>
+            <a href=${item.href} aria-label="${item.name}">${templateItem}</a>
           `;
           return html`
             ${typeof(item.href) != "undefined" ? linkTemplate : templateItem}

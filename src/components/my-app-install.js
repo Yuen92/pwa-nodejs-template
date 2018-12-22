@@ -58,14 +58,14 @@ class MyAppInstall extends connect(store) (PageViewElement) {
             const item = this._datas[key];
             const disabled = item.beforeinstallpromptImplemented ? !this._appInstallAvailable : this._appInstallAvailable;
             const templateItem = html`
-              <paper-icon-item @click="${item.promptAppInstallBanner ? this._promptAppInstallBanner : false}" ?disabled="${disabled}">
+              <paper-icon-item role="none" @click="${item.promptAppInstallBanner ? this._promptAppInstallBanner : false}" ?disabled="${disabled}">
                 <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
                 <div style="flex: auto;">${item.name}</div>
                 ${item.promptAppInstallBanner ? "" : chevronRight}
               </paper-icon-item>
             `;
             const linkTemplate = html`
-              <a  href=${item.href}>${templateItem}</a>
+              <a  href=${item.href} aria-label="${item.name}">${templateItem}</a>
             `;
             return html`
               ${(typeof(item.href) != "undefined" && !disabled) ? linkTemplate : templateItem}

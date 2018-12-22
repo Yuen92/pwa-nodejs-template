@@ -61,14 +61,14 @@ class MySettings extends connect(store)(PageViewElement) {
         ${Object.keys(this._settings).map((key) => {
           const item = this._settings[key];
           const templateItem = html`
-            <paper-icon-item>
+            <paper-icon-item role="none">
               <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
               <div style="flex: auto;">${item.name}</div>
               ${chevronRight}
             </paper-icon-item>
           `;
           const linkTemplate = html`
-            <a href=${item.href}>${templateItem}</a>
+            <a href=${item.href} aria-label="${item.name}">${templateItem}</a>
           `;
           return html`
             ${typeof(item.href) != "undefined" ? linkTemplate : templateItem}
