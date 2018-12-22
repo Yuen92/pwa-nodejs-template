@@ -70,7 +70,13 @@
           if(registrations.length == 0){
             navigator.serviceWorker.register('service-worker-min.js', {
               scope: '/',
-            });
+            }).then(reg => console.log('service-worker-min.js registered!', reg));
+          }else {
+            if(!/service-worker\.js/.test(registrations[0].active.scriptURL)){
+              if(navigator.onLine){
+                registrations[0].unregister()
+              }
+            }
           }
         });
         

@@ -112,9 +112,16 @@ export const updateDrawerState = (opened) => {
 
 export const registerServiceWorker = () => (dispatch, getState) => {
   if(!getState().app.serviceWorkerRegistered){
-    var event = new CustomEvent('serviceWorkerToRegister');
-    window.dispatchEvent(event);
-    dispatch({ type: REGISTER_SERVICE_WORKER })
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      if(registrations.length == 0){
+        var event = new CustomEvent('serviceWorkerToRegister');
+        window.dispatchEvent(event);
+      }else if(!/service-worker\.js/.test(registrations[0].active.scriptURL)){
+        var event = new CustomEvent('serviceWorkerToRegister');
+        window.dispatchEvent(event);
+      }
+      dispatch({ type: REGISTER_SERVICE_WORKER })
+    });
   }
 };
 

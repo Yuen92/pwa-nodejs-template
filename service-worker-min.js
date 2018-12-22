@@ -3,7 +3,7 @@ const CACHE_VERSION = 1;
 let CURRENT_CACHES = {
   entryPoint: '/' + CACHE_VERSION
 };
-const SERVICE_WORKER_PRE_CACHE_URL = '/esm-bundled/service-worker.js';
+const SERVICE_WORKER_PRE_CACHE_URL = '/service-worker.js';
 
 function createCacheBustedRequest(url) {
   let request = new Request(url, {cache: 'reload'});
@@ -21,12 +21,14 @@ function createCacheBustedRequest(url) {
 }
 
 self.addEventListener('install', event => {
+  var build = event.target.location.pathname.replace("/service-worker-min.js","");
+  var SERVICE_WORKER_PRE_CACHE_URL_WITH_BUILD_DIR = build + SERVICE_WORKER_PRE_CACHE_URL;
   event.waitUntil(
     // We can't use cache.add() here, since we want SERVICE_WORKER_PRE_CACHE_URL to be the cache key, but
     // the actual URL we end up requesting might include a cache-busting parameter.
-    fetch(createCacheBustedRequest(SERVICE_WORKER_PRE_CACHE_URL)).then(function(response) {
+    fetch(createCacheBustedRequest(SERVICE_WORKER_PRE_CACHE_URL_WITH_BUILD_DIR)).then(function(response) {
       return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(SERVICE_WORKER_PRE_CACHE_URL, response);
+        return cache.put(SERVICE_WORKER_PRE_CACHE_URL_WITH_BUILD_DIR, response);
       });
     })
   );
