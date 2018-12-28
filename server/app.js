@@ -6,6 +6,8 @@ const app = express();
 // compress all responses
 app.use(compression())
 
+// use device detection
+
 // For each route check with the server (ETAG) if the resources change
 // If not the browser will use the resource in from browser cache
 // https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#defining_optimal_cache-control_policy
@@ -16,7 +18,7 @@ app.get(["/", "/view2", "/view3", "/home", "/settings", "/settings/app-install"]
   }
 );
 
-app.get(["/*js","/*json","/*ico","/*png"],
+app.get(["/*js","/*json","/*ico","/*png","/*jpg"],
   function ( request, response, next ) {
     // 60sec * 60min * 24hours *7days => 604800
     response.set('Cache-Control', 'max-age=604800');
