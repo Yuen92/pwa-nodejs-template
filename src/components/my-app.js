@@ -200,7 +200,7 @@ class MyApp extends connect(store)(LitElement) {
         }
 
         .main-content {
-          padding-top: 107px;
+          padding-top: 106px;
         }
 
         /* The drawer button isn't shown in the wide layout, so we don't
