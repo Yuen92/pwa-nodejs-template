@@ -18,7 +18,10 @@ class MyHome extends PageViewElement {
         <article>
           <h1>Data-Driven Technological Innovations</h1>
           <p>
-            This amazing application "<a href="/">Data-Driven Technological Innovations</a>" applies the latest technology available around the web to improve digital business.
+            This amazing application "<a href="/">Data-Driven Technological Innovations</a>" shares and demonstrates the business value of latest digital technology using data-driven model.
+          </p>
+          <p>
+            There is nothing secret, apply basics : measure business performance, apply innovations then attest business performance improvement.
           </p>
           <p>
             The data-driven model is used to provide in the fastest way the last features possibles.
@@ -32,7 +35,7 @@ class MyHome extends PageViewElement {
             <article>
               <h2>Basic Best Practices</h2>
               <p>
-                Because it's always good to remember the basics, below the minimum checklist:
+                Because it's always good to remember basics, below the minimum checklist:
               </p>
               <ul>
                 <li><b>User Friendly:</b> Build a good mobile experience using a responsive layout.</li>
