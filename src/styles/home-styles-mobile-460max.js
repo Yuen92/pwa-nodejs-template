@@ -1,6 +1,6 @@
 import { html } from '@polymer/lit-element';
 
-export const HomeStyles = html`
+export const HomeStylesMobile = html`
 <style>
   @media (min-device-width: 767px){
     /* TODO: use url(./images/mobile/ddti.jpg) when server-pushed based on viewport will be available */
