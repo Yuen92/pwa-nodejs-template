@@ -132,10 +132,14 @@ class MyApp extends connect(store)(LitElement) {
       .drawer-list {
         box-sizing: border-box;
         width: 100%;
-        height: 100%;
         padding: 24px;
         background: var(--app-drawer-background-color);
         position: relative;
+        
+        /* Workaround for standalone install application on iOS */
+        height: 110%;
+        padding-top: 50px;
+        transform: translate3d(0,-25px,0);
       }
 
       .drawer-list > a {
@@ -151,9 +155,10 @@ class MyApp extends connect(store)(LitElement) {
       }
 
       /* Workaround for IE11 displaying <main> as inline */
+      /* Workaround for display header color in standalone iOS when swipe to bottom */
       main {
         display: block;
-        background: var(--app-header-background-color);
+        background: linear-gradient(to bottom, var(--app-header-background-color) -20%, var(--app-header-background-color) 0%, white 0%,white 100%);
       }
 
       .main-content {
