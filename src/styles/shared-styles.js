@@ -41,13 +41,6 @@ export const SharedStyles = html`
     color: var(--app-primary-color);
   }
 
-
-  @media (min-width: 460px) {
-    h1 {
-      font-size: 36px;
-    }
-  }
-
   .circle {
     display: block;
     width: 64px;

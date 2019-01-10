@@ -1,4 +1,6 @@
 export const UPDATE_PAGE = 'UPDATE_PAGE';
+export const UPDATE_PATHNAME = 'UPDATE_PATHNAME';
+export const REWRITE_PATHNAME = "REWRITE_PATHNAME";
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
 export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
@@ -12,17 +14,29 @@ export const ADD_PAGE_ANIMATION = 'ADD_PAGE_ANIMATION';
 
 export const navigate = (path) => (dispatch, getState) => {
   // Add Page Navigation after the first navigation
-  dispatch(addPageAnimation());
+  var pageCount = getState().app.pageCounter;
+  var pageAnimationAdded = getState().app.pageAnimationAdded;
+  if(pageCount > 0 && !pageAnimationAdded){
+    dispatch(addPageAnimation());
+  }
 
   // Extract the page name from path.
   const page = path === '/' ? 'home' : path.slice(1);
+  if(path == "/home"){
+    dispatch(rewritePathname("/"));
+  } else {
+    dispatch(updatePathname("/"));
+  }
 
   // Any other info you might want to extract from the path (like page type),
   // you can do here
   dispatch(loadPage(page));
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
-  dispatch(updateDrawerState(false));
+  var drawerOpened = getState().app.drawerOpened;
+  if(drawerOpened){
+    dispatch(updateDrawerState(false));
+  }
 
   // Increment page
   dispatch(pageIncrement());
@@ -75,9 +89,29 @@ const loadPage = (page) => (dispatch) => {
 };
 
 const updatePage = (page) => {
+  var pathname = window.location.pathname;
   return {
     type: UPDATE_PAGE,
     page
+  };
+};
+
+const updatePathname = () => {
+  var pathname = window.location.pathname;
+  return {
+    type: UPDATE_PATHNAME,
+    pathname
+  };
+};
+
+const rewritePathname = (pathname) => {
+  window.history.replaceState({
+    "href": document.location.protocol + "//" + document.location.hostname,
+    "pageTitle":document.title
+  }, document.title, "/");
+  return {
+    type: REWRITE_PATHNAME,
+    pathname
   };
 };
 

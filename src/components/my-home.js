@@ -2,7 +2,7 @@ import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from './shared-styles.js';
+import { SharedStyles } from '../styles/shared-styles.js';
 
 class MyHome extends PageViewElement {
   render() {
@@ -63,16 +63,16 @@ class MyHome extends PageViewElement {
               flex-wrap: wrap;
             }
             .wrapper > section {
-              margin: 24px;
+              margin: 12px auto;
             }
             .primary{
-              width: 320px;
+              width: calc(100% - 72px);
             }
             .secondary {
-              width: 320px;
+              width: calc(100% - 72px);
             }
             article.secondary {
-              margin: 24px;
+              margin: 12px auto;
               box-shadow: 0 0 5px rgba(0,0,0,.2);
             }
           }

@@ -274,7 +274,12 @@ class MyApp extends connect(store)(LitElement) {
     // To force all event listeners for gestures to be passive.
     // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
     setPassiveTouchGestures(true);
-    
+
+    // Init state
+    this._offline = false;
+    this._snackbarOpened = false;
+    this._drawerOpened = false;
+
     // Listen first user interaction
     this._listenFirstUserInteraction();
 
@@ -291,6 +296,7 @@ class MyApp extends connect(store)(LitElement) {
   }
 
   firstUpdated() {
+    // TODO: rework in order to don't disptach action during the watcher installation
     installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     installMediaQueryWatcher(`(min-width: 460px)`,

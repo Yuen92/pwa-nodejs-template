@@ -1,15 +1,7 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
 import {
   UPDATE_PAGE,
+  UPDATE_PATHNAME,
+  REWRITE_PATHNAME,
   UPDATE_OFFLINE,
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
@@ -22,6 +14,7 @@ import {
 } from '../actions/app.js';
 
 const INITIAL_STATE = {
+  pathname: window.document.location.pathname,
   page: '',
   offline: false,
   drawerOpened: false,
@@ -29,7 +22,7 @@ const INITIAL_STATE = {
   serviceWorkerRegistered: false,
   pageCounter: 0,
   promptAppInstallBanner: false,
-  appInstallAvailable: false,
+  appInstallAvailable: undefined,
   pageAnimationAdded: false
 };
 
@@ -39,6 +32,16 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         page: action.page
+      };
+    case UPDATE_PATHNAME:
+      return {
+        ...state,
+        pathname: action.pathname
+      };
+    case REWRITE_PATHNAME:
+      return {
+        ...state,
+        pathname: action.pathname
       };
     case UPDATE_OFFLINE:
       return {
