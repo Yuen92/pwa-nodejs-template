@@ -153,7 +153,7 @@ class MyApp extends connect(store)(LitElement) {
       /* Workaround for IE11 displaying <main> as inline */
       main {
         display: block;
-        background: white;
+        background: var(--app-header-background-color);
       }
 
       .main-content {
