@@ -11,7 +11,7 @@ import {
 } from '../actions/app.js';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from './shared-styles.js';
+import { SharedStyles } from '../styles/shared-styles.js';
 import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 
 // These are the elements needed by this element.

@@ -91,3 +91,4 @@ Very pain full ! Fork the project [GoogleChromeLabs/sw-precache](https://github.
 - [x] Use link preload when service worker should response
 - [ ] Pull request to do in [GoogleChromeLabs/sw-precache](https://github.com/GoogleChromeLabs/sw-precache)
 - [ ] Use the [navigation-preload](https://developers.google.com/web/updates/2017/02/navigation-preload) in service-worker
+- [ ] Improve server-push to push resource based on viewport (mobile/desktop)

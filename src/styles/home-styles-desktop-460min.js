@@ -3,8 +3,9 @@ import { html } from '@polymer/lit-element';
 export const HomeStyles = html`
 <style>
   @media (min-device-width: 767px){
+    /* TODO: use url(./images/desktop/ddti.jpg) when server-pushed based on viewport will be available */
     section.first{
-      background-image: url(./images/desktop/ddti.jpg);
+      background-image: url(./images/shared/ddti.jpg);
       background-size: cover;
     }
     .wrapper {
