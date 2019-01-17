@@ -1,6 +1,6 @@
 import { html } from '@polymer/lit-element';
 
-export const SharedStyles = html`
+export const AppStyles = html`
 <style>
   :host {
     --app-drawer-width: 256px;
@@ -125,6 +125,9 @@ export const SharedStyles = html`
   main {
     display: block;
     background: white;
+    
+    /* Workaround for display header color in standalone iOS when swipe to bottom */
+    /* background: linear-gradient(to bottom, var(--app-header-background-color) -20%, var(--app-header-background-color) 30%, white 0%,white 100%); */
   }
 
   .main-content {

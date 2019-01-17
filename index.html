@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>window.performance.mark('indexParsingTime-start');</script>
     <meta charset="utf-8">
     <title>Data-Driven Technological Innovations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -149,6 +150,13 @@
       deferredPrompt = e;
     });
     </script>
-    <script>window.performance.mark('index_fully_parsed');</script>
+    <script>
+      window.performance.mark('indexParsingTime-end');
+      performance.measure(
+        "indexParsingTime",
+        "indexParsingTime-start",
+        "indexParsingTime-end"
+      );
+    </script>
   </body>
 </html>

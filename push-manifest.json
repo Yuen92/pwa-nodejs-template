@@ -33,7 +33,9 @@
     "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
-    },
+    }
+  },
+  "/esm-bundled/src/components/my-app.js": {
     "images/shared/ddti.jpg": {
       "type": "image",
       "weight": 1
@@ -71,10 +73,6 @@
       "weight": 1
     },
     "images/manifest/icon-192x192.png": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/shared/ddti.jpg": {
       "type": "image",
       "weight": 1
     }

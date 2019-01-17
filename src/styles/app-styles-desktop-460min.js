@@ -1,6 +1,6 @@
 import { html } from '@polymer/lit-element';
 
-export const SharedStyles = html`
+export const AppStylesDesktop = html`
 <style>
   /* Wide layout: when the viewport width is bigger than 460px, layout
   changes to a wide layout. */
