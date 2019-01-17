@@ -7,6 +7,7 @@ import { store } from '../store.js';
 
 // These are the actions needed by this element.
 import { loadSettings } from '../actions/settings.js';
+import { updateDescription } from '../actions/app.js';
 
 // We are lazy loading its reducer.
 import settings from '../reducers/settings.js';
@@ -27,6 +28,7 @@ import { chevronRight } from '../data/my-icons.js';
 
 class MySettings extends connect(store)(PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       ${PaperIconItemStyles}
@@ -80,13 +82,15 @@ class MySettings extends connect(store)(PageViewElement) {
 
   static get properties() {
     return {
-      _settings: Object
+      _settings: Object,
+      _description: { type: String }
     }
   }
 
   constructor() {
     super();
     this._settings = []
+    this._description = "Settings page wich list all the settings features for your amazing progressive web application Data-Driven Technological Innovations.";
   }
 
   firstUpdated() {

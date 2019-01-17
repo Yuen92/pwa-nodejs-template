@@ -17,6 +17,7 @@ import { store } from '../store.js';
 
 // These are the actions needed by this element.
 import { checkout } from '../actions/shop.js';
+import { updateDescription } from '../actions/app.js';
 
 // We are lazy loading its reducer.
 import shop, { cartQuantitySelector } from '../reducers/shop.js';
@@ -35,6 +36,7 @@ import { addToCartIcon } from '../data/my-icons.js';
 
 class MyShopping extends connect(store)(PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       ${ButtonSharedStyles}
@@ -92,11 +94,18 @@ class MyShopping extends connect(store)(PageViewElement) {
     `;
   }
 
-  static get properties() { return {
-    // This is the data from the store.
-    _quantity: { type: Number },
-    _error: { type: String },
-  }}
+  static get properties() {
+    return {
+      // This is the data from the store.
+      _quantity: { type: Number },
+      _error: { type: String },
+    }
+  }
+
+  constructor() {
+    super();
+    this._description = "Shopping page example wich implements add to cart, remove from cart and checkout using redux."
+  }
 
   _checkoutButtonClicked() {
     store.dispatch(checkout());

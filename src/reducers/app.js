@@ -1,5 +1,6 @@
 import {
   UPDATE_PAGE,
+  UPDATE_DESCRIPTION,
   UPDATE_PATHNAME,
   REWRITE_PATHNAME,
   UPDATE_OFFLINE,
@@ -16,6 +17,7 @@ import {
 const INITIAL_STATE = {
   pathname: window.document.location.pathname,
   page: '',
+  description: '',
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
@@ -32,6 +34,11 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         page: action.page
+      };
+    case UPDATE_DESCRIPTION:
+      return {
+        ...state,
+        description: action.description
       };
     case UPDATE_PATHNAME:
       return {

@@ -90,6 +90,7 @@ class MyApp extends connect(store)(LitElement) {
     return {
       appTitle: { type: String },
       _page: { type: String },
+      _description: { type: String },
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
       _offline: { type: Boolean }
@@ -152,8 +153,13 @@ class MyApp extends connect(store)(LitElement) {
     if (changedProps.has('_page')) {
       const pageTitle = this.appTitle + ' - ' + this._page;
       updateMetadata({
-        title: pageTitle,
-        description: pageTitle
+        title: pageTitle
+        // This object also takes an image property, that points to an img src.
+      });
+    }
+    if (changedProps.has('_description')) {
+      updateMetadata({
+        description: this._description
         // This object also takes an image property, that points to an img src.
       });
     }
@@ -169,6 +175,7 @@ class MyApp extends connect(store)(LitElement) {
 
   stateChanged(state) {
     this._page = state.app.page;
+    this._description = state.app.description;
     this._offline = state.app.offline;
     this._snackbarOpened = state.app.snackbarOpened;
     this._drawerOpened = state.app.drawerOpened;

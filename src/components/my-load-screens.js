@@ -6,7 +6,9 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../store.js';
 
 // These are the actions needed by this element.
+import { updateDescription } from '../actions/app.js';
 // import { loadSettings } from '../actions/settings.js';
+
 
 // We are lazy loading its reducer.
 // import settings from '../reducers/settings.js';
@@ -27,6 +29,7 @@ import { chevronRight } from '../data/my-icons.js';
 
 class MyLoadScreens extends connect(store)(PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       ${PaperIconItemStyles}
@@ -88,6 +91,7 @@ class MyLoadScreens extends connect(store)(PageViewElement) {
   constructor() {
     super();
     this._screensCached = [];
+    this._description = "Settings page which allows to manage screens available in offline mode. Allow to load page you want to use without network/internet.";
   }
 
   firstUpdated() {

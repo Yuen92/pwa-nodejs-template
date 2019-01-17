@@ -1,11 +1,19 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+
+// This element is connected to the Redux store.
+import { store } from '../store.js';
+
+// These are the actions needed by this element.
+import { updateDescription } from '../actions/app.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../styles/shared-styles.js';
 
-class MyStaging extends PageViewElement {
+class MyStaging extends connect(store)(PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       <section>
@@ -15,6 +23,11 @@ class MyStaging extends PageViewElement {
         </p>
       </section>
     `
+  }
+
+  constructor() {
+    super();
+    this._description = "Page under construction used by your amazing progressive web application Data-Driven Technological Innovations."
   }
 }
 

@@ -1,5 +1,12 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
+import { connect } from 'pwa-helpers/connect-mixin.js';
+
+// This element is connected to the Redux store.
+import { store } from '../store.js';
+
+// These are the actions needed by this element.
+import { updateDescription } from '../actions/app.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../styles/shared-styles.js';
@@ -7,8 +14,9 @@ import { HomeStyles } from '../styles/home-styles.js';
 import { HomeStylesMobile } from '../styles/home-styles-mobile-460max.js';
 import { HomeStylesDesktop } from '../styles/home-styles-desktop-460min.js';
 
-class MyHome extends PageViewElement {
+class MyHome extends connect(store)(PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       ${HomeStyles}
@@ -179,6 +187,15 @@ class MyHome extends PageViewElement {
         </div>
       </section>
     `;
+  }
+  static get properties() {
+    return {
+    }
+  }
+
+  constructor() {
+    super();
+    this._description = "Amazing progressive web application which shares and demonstrates the business value of latest digital technology using data-driven model. There is nothing secret, apply basics : measure business performance, apply innovations then attest business performance improvement."
   }
 }
 

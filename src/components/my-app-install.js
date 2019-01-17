@@ -6,9 +6,8 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 import { store } from '../store.js';
 
 // These are the actions needed by this element.
-import {
-  promptAppInstallBanner
-} from '../actions/app.js';
+import { promptAppInstallBanner } from '../actions/app.js';
+import { updateDescription } from '../actions/app.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../styles/shared-styles.js';
@@ -23,6 +22,7 @@ import { appInstallMinimum } from "../data/app-install.js";
 
 class MyAppInstall extends connect(store) (PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       ${PaperIconItemStyles}
@@ -84,7 +84,8 @@ class MyAppInstall extends connect(store) (PageViewElement) {
 
   constructor(){
     super();
-    this._datas = appInstallMinimum
+    this._datas = appInstallMinimum;
+    this._description = "Settings page which allows to add the application to homescreen, feature named add to homescreen or A2HS. As all progressive web application, Data-Driven Technological Innovations can be used like a native mobile application."
   }
 
   stateChanged(state) {

@@ -7,6 +7,7 @@ import { store } from '../store.js';
 
 // These are the actions needed by this element.
 import { increment, decrement } from '../actions/counter.js';
+import { updateDescription } from '../actions/app.js';
 
 // We are lazy loading its reducer.
 import counter from '../reducers/counter.js';
@@ -22,6 +23,7 @@ import { SharedStyles } from '../styles/shared-styles.js';
 
 class MyCounter extends connect(store)(PageViewElement) {
   render() {
+    store.dispatch(updateDescription(this._description));
     return html`
       ${SharedStyles}
       <section>
@@ -46,11 +48,18 @@ class MyCounter extends connect(store)(PageViewElement) {
     `;
   }
 
-  static get properties() { return {
-    // This is the data from the store.
-    _clicks: { type: Number },
-    _value: { type: Number },
-  }}
+  static get properties() {
+    return {
+      // This is the data from the store.
+      _clicks: { type: Number },
+      _value: { type: Number },
+    }
+  }
+
+  constructor() {
+    super();
+    this._description = "Page example wich implements a counter using redux."
+  }
 
   _counterIncremented() {
     store.dispatch(increment());

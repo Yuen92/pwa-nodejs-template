@@ -1,4 +1,5 @@
 export const UPDATE_PAGE = 'UPDATE_PAGE';
+export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const UPDATE_PATHNAME = 'UPDATE_PATHNAME';
 export const REWRITE_PATHNAME = "REWRITE_PATHNAME";
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
@@ -89,10 +90,17 @@ const loadPage = (page) => (dispatch) => {
 };
 
 const updatePage = (page) => {
-  var pathname = window.location.pathname;
   return {
     type: UPDATE_PAGE,
     page
+  };
+};
+
+export const updateDescription = (description) => {
+
+  return {
+    type: UPDATE_DESCRIPTION,
+    description
   };
 };
 
