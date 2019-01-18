@@ -9,16 +9,10 @@
   "repository": "Yuen92/pwa-nodejs-template",
   "scripts": {
     "start": "polymer serve --port 80",
-    "build": "npm run build:prpl-server && npm run build:static",
-    "build:prpl-server": "polymer build --auto-base-path && gulp prpl-server",
-    "build:static": "polymer build",
-    "serve:prpl-server": "prpl-server --root server/build",
-    "serve:static": "polymer serve --port 5000 build/es5-bundled",
+    "build": "polymer build --auto-base-path && gulp prpl-server",
+    "serve": "prpl-server --root server/build",
     "test": "npm run test:unit && npm run test:integration",
-    "test:integration": "mocha test/integration --timeout=10000",
-    "test:unit": "polymer test --module-resolution=node --npm",
-    "test:sauce": "polymer test --module-resolution=node --npm -s 'windows 10/microsoftedge@17' -s 'macos 10.13/safari@11'",
-    "test:regenerate_screenshots": "mocha test/integration/screenshots-baseline/regenerate.js --timeout=15000"
+    "test:integration": "mocha test/integration --timeout=10000"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.0",
