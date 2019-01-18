@@ -86,8 +86,6 @@ Very pain full ! Fork the project [GoogleChromeLabs/sw-precache](https://github.
 - [x] Remove Google domain dependency for fonts
 > <script>window.polymerSkipLoadingFontRoboto = true;</script>
 
-- [x] Fix app-drawer bug on iPhone when application used in standalone
-- [ ] Pull request to do in [PolymerElements/app-layout](https://github.com/PolymerElements/app-layout) :
 - [x] Use link preload when service worker should response
 - [ ] Pull request to do in [GoogleChromeLabs/sw-precache](https://github.com/GoogleChromeLabs/sw-precache)
 - [ ] Use the [navigation-preload](https://developers.google.com/web/updates/2017/02/navigation-preload) in service-worker
