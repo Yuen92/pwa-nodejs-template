@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element'; 
+import { LitElement, html } from 'lit-element'; 
 import '@polymer/paper-item/paper-item.js';
 
 // Create your custom component
