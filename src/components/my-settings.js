@@ -90,7 +90,7 @@ class MySettings extends connect(store)(PageViewElement) {
   constructor() {
     super();
     this._settings = []
-    this._description = "Settings page wich list all the settings features for your amazing progressive web application Data-Driven Technological Innovations.";
+    this._description = "Settings page which list all the settings features for your amazing progressive web application Data-Driven Technological Innovations.";
   }
 
   firstUpdated() {

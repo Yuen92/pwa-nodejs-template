@@ -18,6 +18,8 @@ export class PageViewElement extends LitElement {
 
   static get properties() {
     return {
+      title: { type: String },
+      description: { type: String },
       active: { type: Boolean }
     }
   }

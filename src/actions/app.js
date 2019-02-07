@@ -1,3 +1,6 @@
+
+import { updateMetadata } from 'pwa-helpers/metadata.js';
+
 export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const UPDATE_PATHNAME = 'UPDATE_PATHNAME';
@@ -97,7 +100,9 @@ const updatePage = (page) => {
 };
 
 export const updateDescription = (description) => {
-
+  updateMetadata({
+    description: description
+  });
   return {
     type: UPDATE_DESCRIPTION,
     description
