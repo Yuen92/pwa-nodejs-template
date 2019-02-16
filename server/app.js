@@ -2,6 +2,7 @@
 const express = require('express');
 const prpl = require('prpl-server');
 const compression = require('compression');
+const cacheControl = require('express-cache-controller');
 const datastore = require('./library/datastore.js');
 
 // Project module
@@ -12,13 +13,34 @@ const app = express();
 // compress all responses
 app.use(compression())
 
+// Always check with the server (ETAG) if the resources change
+// If not the browser will use the resource in from browser cache
+// https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#defining_optimal_cache-control_policy
+app.use(cacheControl({
+  noCache: true
+}));
+
 /*******************************************************************************
  * Datas Stuff wich use datastore
  ******************************************************************************/
 app.get(["/settings/datas"],
   function ( request, response, next ) {
-    response.set('Cache-Control', 'public, no-cache');
     new api(request, response).serveResponse();
+  }
+);
+
+
+/*******************************************************************************
+ * Cache Policy
+ ******************************************************************************/
+app.get(["/*.js","/*.json","/*.ico","/*.png","/*.jpg","/*.webp"],
+  function ( request, response, next ) {
+    // 60sec * 60min * 24hours *7days => 604800
+    response.cacheControl = {
+      noCache: false,
+      maxAge: 604800
+    };
+    next();
   }
 );
 
@@ -28,23 +50,9 @@ app.get(["/settings/datas"],
 // For each route check with the server (ETAG) if the resources change
 // If not the browser will use the resource in from browser cache
 // https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#defining_optimal_cache-control_policy
-app.get(["/",
-        "/home",
-        "/settings",
-        "/settings/app-install",
-        "/settings/load-screens",
-        "/counter",
-        "/shopping"],
+app.get(["/*service-worker.js"],
   function ( request, response, next ) {
-    response.set('Cache-Control', 'public, no-cache');
-    next();
-  }
-);
-
-app.get(["/*js","/*json","/*ico","/*png","/*jpg"],
-  function ( request, response, next ) {
-    // 60sec * 60min * 24hours *7days => 604800
-    response.set('Cache-Control', 'max-age=604800');
+    response.set('Cache-Control', 'public, no-cache, max-age=0');
     next();
   }
 );

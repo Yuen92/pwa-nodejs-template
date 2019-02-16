@@ -18,25 +18,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
-      "type": "image",
-      "weight": 1
-    }
-  },
-  "/esm-bundled/src/components/my-app.js": {
-    "images/shared/ddti.jpg": {
       "type": "image",
       "weight": 1
     }
@@ -60,19 +46,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -96,19 +74,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -132,19 +102,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -168,19 +130,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -204,19 +158,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -240,19 +186,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -276,19 +214,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
@@ -312,19 +242,11 @@
       "type": "fetch",
       "weight": 1
     },
-    "service-worker-min.js": {
-      "type": "worker",
-      "weight": 1
-    },
     "service-worker.js": {
       "type": "worker",
       "weight": 1
     },
     "images/favicon.ico": {
-      "type": "image",
-      "weight": 1
-    },
-    "images/manifest/icon-192x192.png": {
       "type": "image",
       "weight": 1
     }
