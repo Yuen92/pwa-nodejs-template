@@ -33,7 +33,24 @@ app.get(["/settings/datas"],
 /*******************************************************************************
  * Cache Policy
  ******************************************************************************/
-app.get(["/*.js","/*.json","/*.ico","/*.png","/*.jpg","/*.webp"],
+app.get(["/*.html","/*.js","/*.json","/*.ico","/*.png","/*.jpg","/*.webp"],
+  function ( request, response, next ) {
+    // 60sec * 60min * 24hours *7days => 604800
+    response.cacheControl = {
+      noCache: false,
+      maxAge: 604800
+    };
+    next();
+  }
+);
+
+app.get(["/",
+        "/home",
+        "/settings",
+        "/settings/app-install",
+        "/settings/load-screens",
+        "/counter",
+        "/shopping"],
   function ( request, response, next ) {
     // 60sec * 60min * 24hours *7days => 604800
     response.cacheControl = {
