@@ -61,21 +61,21 @@ class MySettings extends connect(store)(PageViewElement) {
       <section>
         <h1>Settings</h1>
         ${Object.keys(this._settings).map((key) => {
-          const item = this._settings[key];
-          const templateItem = html`
+      const item = this._settings[key];
+      const templateItem = html`
             <paper-icon-item role="none">
-              <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof(item.iconPath) != "undefined" ? item.iconPath: ""}></path></svg></div>
+              <div slot="item-icon"><svg height='24' viewBox='0 0 24 24' width='24'><path d=${typeof (item.iconPath) != "undefined" ? item.iconPath : ""}></path></svg></div>
               <div style="flex: auto;">${item.name}</div>
               ${chevronRight}
             </paper-icon-item>
           `;
-          const linkTemplate = html`
+      const linkTemplate = html`
             <a href=${item.href} aria-label="${item.name}">${templateItem}</a>
           `;
-          return html`
-            ${typeof(item.href) != "undefined" ? linkTemplate : templateItem}
+      return html`
+            ${typeof (item.href) != "undefined" ? linkTemplate : templateItem}
           `;
-        })}
+    })}
       </section>
     `;
   }
@@ -89,7 +89,14 @@ class MySettings extends connect(store)(PageViewElement) {
 
   constructor() {
     super();
-    this._settings = []
+    this._settings = [
+      {
+        "iconPath": "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z",
+        "iconName": "home",
+        "href": "/settings/app-install",
+        "name": "A2HS - Application Install"
+      }
+    ]
     this._description = "Settings page which list all the settings features for your amazing progressive web application Data-Driven Technological Innovations.";
   }
 

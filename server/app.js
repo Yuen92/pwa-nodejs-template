@@ -1,13 +1,30 @@
+// Public module
 const express = require('express');
 const prpl = require('prpl-server');
 const compression = require('compression');
+const datastore = require('./library/datastore.js');
+
+// Project module
+const api = require('./api/json-request.js');
+
 const app = express();
 
 // compress all responses
 app.use(compression())
 
-// use device detection
+/*******************************************************************************
+ * Datas Stuff wich use datastore
+ ******************************************************************************/
+app.get(["/settings/datas"],
+  function ( request, response, next ) {
+    response.set('Cache-Control', 'public, no-cache');
+    new api(request, response).serveResponse();
+  }
+);
 
+/*******************************************************************************
+ * Front-end Routes
+ ******************************************************************************/
 // For each route check with the server (ETAG) if the resources change
 // If not the browser will use the resource in from browser cache
 // https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#defining_optimal_cache-control_policy
@@ -41,6 +58,9 @@ app.get(["/esm-bundled/service-worker-min.js"],
   }
 );
 
+/*******************************************************************************
+ * SEO Stuff
+ ******************************************************************************/
 app.get(["/robots.txt"],
   function ( request, response, next ) {
     response.set('Content-Type', 'text/plain; charset=UTF-8');
@@ -63,5 +83,5 @@ app.get('/*', prpl.makeHandler('./build', polyConfigFile));
 // Listen to the App Engine-specified port, or 80 otherwise
 const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
-  console.log(`Express + prpl-server app listening on port ${PORT}!`);
+  console.log(`Express + prpl-server app listening on ${PORT}!`);
 });

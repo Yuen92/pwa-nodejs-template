@@ -1,0 +1,5 @@
+{
+    "GCLOUD_PROJECT": "pwa-nodejs-template",
+    "KEY_FILE": "/key/pwa-nodejs-template.json",
+    "DATA_BACKEND": "datastore"
+}
