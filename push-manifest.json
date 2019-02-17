@@ -81,6 +81,11 @@
     "images/favicon.ico": {
       "type": "image",
       "weight": 1
+    },
+    "/settings/datas": {
+      "crossorigin": "anonymous",
+      "type": "fetch",
+      "weight": 1
     }
   },
   "/settings/app-install": {
