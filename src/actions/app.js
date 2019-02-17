@@ -9,7 +9,6 @@ export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
 export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
-export const REGISTER_SERVICE_WORKER = 'REGISTER_SERVICE_WORKER';
 export const PAGE_INCREMENT = 'PAGE_INCREMENT';
 export const PROMPT_APP_INSTALL_BANNER = 'PROMPT_APP_INSTALL_BANNER';
 export const UPDATE_APP_INSTALL = 'UPDATE_APP_INSTALL';
@@ -155,21 +154,6 @@ export const updateDrawerState = (opened) => {
     type: UPDATE_DRAWER_STATE,
     opened
   };
-};
-
-export const registerServiceWorker = () => (dispatch, getState) => {
-  if(!getState().app.serviceWorkerRegistered){
-    navigator.serviceWorker.getRegistrations().then(registrations => {
-      if(registrations.length == 0){
-        var event = new CustomEvent('serviceWorkerToRegister');
-        window.dispatchEvent(event);
-      }else if(!/service-worker\.js/.test(registrations[0].active.scriptURL)){
-        var event = new CustomEvent('serviceWorkerToRegister');
-        window.dispatchEvent(event);
-      }
-      dispatch({ type: REGISTER_SERVICE_WORKER })
-    });
-  }
 };
 
 export const pageIncrement = () => (dispatch) => {

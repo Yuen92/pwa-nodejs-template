@@ -14,7 +14,6 @@ import {
   navigate,
   updateOffline,
   updateDrawerState,
-  registerServiceWorker,
   updateAppInstallStatus
 } from '../actions/app.js';
 
@@ -184,26 +183,27 @@ class MyApp extends connect(store)(LitElement) {
   _listenFirstUserInteraction(e) {
     // Define listener at window level to remove after the first usage
     window.pwaNodejsTemplate = {};
-    window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener = function (e) {
-      store.dispatch(registerServiceWorker());
+    window.pwaNodejsTemplate._firstUserInteractionAndCleanListener = function (e) {
+      // First user interaction
+      console.log("Welcome user !")
       
       // clean listenFirstUserInteraction listener
-      window.removeEventListener("click", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-      window.removeEventListener("touchstart", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-      window.removeEventListener("scroll", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-      window.removeEventListener("mousemove", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-      window.removeEventListener("mousedown", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-      window.removeEventListener("keypress", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+      window.removeEventListener("click", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+      window.removeEventListener("touchstart", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+      window.removeEventListener("scroll", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+      window.removeEventListener("mousemove", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+      window.removeEventListener("mousedown", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+      window.removeEventListener("keypress", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
     }
 
     // listen user interaction passive or active to register service worker
     // List of events to listen https://stackoverflow.com/a/10126042 
-    window.addEventListener("click", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-    window.addEventListener("touchstart", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-    window.addEventListener("scroll", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-    window.addEventListener("mousemove", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-    window.addEventListener("mousedown", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
-    window.addEventListener("keypress", window.pwaNodejsTemplate._registerServiceWorkerAndCleanListener)
+    window.addEventListener("click", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+    window.addEventListener("touchstart", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+    window.addEventListener("scroll", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+    window.addEventListener("mousemove", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+    window.addEventListener("mousedown", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
+    window.addEventListener("keypress", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
   }
 }
 

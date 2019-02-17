@@ -7,7 +7,6 @@ import {
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
   UPDATE_DRAWER_STATE,
-  REGISTER_SERVICE_WORKER,
   PAGE_INCREMENT,
   PROMPT_APP_INSTALL_BANNER,
   UPDATE_APP_INSTALL,
@@ -21,7 +20,6 @@ const INITIAL_STATE = {
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
-  serviceWorkerRegistered: false,
   pageCounter: 0,
   promptAppInstallBanner: false,
   appInstallAvailable: undefined,
@@ -69,11 +67,6 @@ const app = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         snackbarOpened: false
-      };
-    case REGISTER_SERVICE_WORKER:
-      return {
-        ...state,
-        serviceWorkerRegistered: true
       };
     case PAGE_INCREMENT:
       return {
