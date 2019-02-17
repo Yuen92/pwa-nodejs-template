@@ -13,6 +13,10 @@ import { SharedStyles } from '../styles/shared-styles.js';
 import { HomeStyles } from '../styles/home-styles.js';
 import { HomeStylesMobile } from '../styles/home-styles-mobile-460max.js';
 import { HomeStylesDesktop } from '../styles/home-styles-desktop-460min.js';
+import { HeroBannerTemplate } from './hero-banner-template.js';
+
+// Static Datas
+import { properties } from '../data/home.js';
 
 class MyHome extends connect(store)(PageViewElement) {
   render() {
@@ -24,17 +28,7 @@ class MyHome extends connect(store)(PageViewElement) {
       ${HomeStylesDesktop}
       <section class="first">
         <article>
-          <h1>Data-Driven Technological Innovations</h1>
-          <p>
-            This amazing application "<a href="/">Data-Driven Technological Innovations</a>" shares and demonstrates the business value of latest digital technology using data-driven model.
-          </p>
-          <p>
-            There is nothing secret, apply basics : measure business performance, apply innovations then attest business performance improvement.
-          </p>
-          <p>
-            The data-driven model is used to provide in the fastest way the last features possibles.
-            Obviously the latest innovations respect basic best practices.
-          </p>
+          ${HeroBannerTemplate}
         </article>
       </section>
       <section class="cards-container">
@@ -127,7 +121,7 @@ class MyHome extends connect(store)(PageViewElement) {
               Responsive web design patterns aim to improve the user experience by keeping your website user friendly across desktop and mobile.
             </p>
             <p>
-              These patterns originally identified by <a="https://www.lukew.com/ff/entry.asp?1514">Luke Wroblewski</a> and are broadcasted by Google throught <a="https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns">Web Fundamentals | Google Developers</a> website.
+              These patterns originally identified by <a href="https://www.lukew.com/ff/entry.asp?1514">Luke Wroblewski</a> and are broadcasted by Google throught <a href="https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns">Web Fundamentals | Google Developers</a> website.
             </p>
           </article>
           <article class="secondary">
@@ -190,12 +184,18 @@ class MyHome extends connect(store)(PageViewElement) {
   }
   static get properties() {
     return {
+      _description: { type: String },
+      _heroBannerSection: Object,
+      _articles: Object
+
     }
   }
 
   constructor() {
     super();
-    this._description = "Amazing progressive web application which shares and demonstrates the business value of latest digital technology using data-driven model. There is nothing secret, apply basics : measure business performance, apply innovations then attest business performance improvement."
+    this._description = properties.description;
+    this._heroBannerSection = properties.heroBannerSection;
+    this._articles = properties.articles;
   }
 }
 
