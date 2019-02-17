@@ -25,18 +25,18 @@ import '@polymer/paper-item/paper-icon-item.js';
 // these icons are needed by this elements
 import { chevronRight } from '../data/my-icons.js';
 
-// Minimum static datas
-import { settingsMin } from '../data/settings-min.js';
+// Static Datas
+import { properties } from '../data/settings.js';
+
 
 class MySettings extends connect(store)(PageViewElement) {
-
   render() {
-    store.dispatch(updateDescription(this._description));
+    // store.dispatch(updateDescription(this._description));
 
     // Workaround due to weird behavior.
     // Init in constructor should be sufficient.
     if(typeof(this._settings.length) == "undefined"){
-      this._settings = settingsMin;
+      this._settings = properties.settings;
     }
     return html`
       ${SharedStyles}
@@ -98,11 +98,13 @@ class MySettings extends connect(store)(PageViewElement) {
 
   constructor() {
     super();
-    this._settings = settingsMin;
-    this._description = "Settings page which list all the settings features for your amazing progressive web application Data-Driven Technological Innovations.";
+    // this._settings = properties.settings;
+    store.dispatch(updateDescription(properties.settings));
+    this._description = properties.description;
   }
 
   firstUpdated() {
+    // TODO : manage the loadSettings depending on the viewport
     store.dispatch(loadSettings());
   }
 
