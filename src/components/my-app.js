@@ -30,9 +30,16 @@ import { AppStyles } from '../styles/app-styles.js';
 import { AppStylesMobile } from '../styles/app-styles-mobile-460max.js';
 import { AppStylesDesktop } from '../styles/app-styles-desktop-460min.js';
 
+// Static Datas
+import { properties } from '../data/app.js';
+
 class MyApp extends connect(store)(LitElement) {
   render() {
-    // Anything that's related to rendering should be done in here.
+    // Workaround due to weird behavior.
+    // Init in constructor should be sufficient.
+    if(this._description == ""){
+      this._description = properties.description;
+    }
     return html`
     ${AppStyles}
     ${AppStylesMobile}
@@ -43,7 +50,7 @@ class MyApp extends connect(store)(LitElement) {
         <button class="menu-btn" title="Menu" @click="${this._menuButtonClicked}">${menuIcon}</button>
         <div main-title>${this.appTitle}</div>
       </app-toolbar>
-
+    
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
         <a ?selected="${this._page === 'home'}" href="/home">Home</a>
@@ -52,10 +59,9 @@ class MyApp extends connect(store)(LitElement) {
         <a ?selected="${this._page === 'shopping'}" href="/shopping">Shopping</a>
       </nav>
     </app-header>
-
+    
     <!-- Drawer content -->
-    <app-drawer id="drawer" .opened="${this._drawerOpened}"
-        @opened-changed="${this._drawerOpenedChanged}">
+    <app-drawer id="drawer" .opened="${this._drawerOpened}" @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
         <a ?selected="${this._page === 'home'}" href="/home">Home</a>
         <a ?selected="${this._page === 'settings'}" href="/settings">Settings</a>
@@ -63,7 +69,7 @@ class MyApp extends connect(store)(LitElement) {
         <a ?selected="${this._page === 'shopping'}" href="/shopping">Shopping</a>
       </nav>
     </app-drawer>
-
+    
     <!-- Main content -->
     <main role="main" class="main-content">
       <my-home class="page" ?active="${this._page === 'home'}"></my-home>
@@ -75,21 +81,23 @@ class MyApp extends connect(store)(LitElement) {
       <my-staging class="page" ?active="${this._page === 'staging'}"></my-staging>
       <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
     </main>
-
+    
     <footer>
       <p>Made with &hearts; for performance</p>
     </footer>
-
+    
     <snack-bar ?active="${this._snackbarOpened}">
-        You are now ${this._offline ? 'offline' : 'online'}.</snack-bar>
+      You are now ${this._offline ? 'offline' : 'online'}.</snack-bar>
     `;
   }
 
   static get properties() {
     return {
       appTitle: { type: String },
-      _page: { type: String },
       _description: { type: String },
+      _author: { type: String },
+      _ldJson: { type: Object },
+      _page: { type: String },
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
       _offline: { type: Boolean }
@@ -102,7 +110,12 @@ class MyApp extends connect(store)(LitElement) {
     // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
     setPassiveTouchGestures(true);
 
-    // Init state
+    // Init Properties
+    // If properties declared in HTML it will be replace by HTML declarative value
+    this.appTitle = properties.title;
+    this._description = properties.description;
+    this._author = properties.author;
+    this._ldJson = properties.ldJson;
     this._offline = false;
     this._snackbarOpened = false;
     this._drawerOpened = false;
@@ -110,12 +123,12 @@ class MyApp extends connect(store)(LitElement) {
     // Listen first user interaction
     this._listenFirstUserInteraction();
 
-    if(typeof(deferredPrompt) != "undefined") {
+    if (typeof (deferredPrompt) != "undefined") {
       store.dispatch(updateAppInstallStatus(true));
-    } else{
+    } else {
       store.dispatch(updateAppInstallStatus(false));
       window.ddti = {}
-      window.ddti._updateAppInstallStatus = function(){
+      window.ddti._updateAppInstallStatus = function () {
         store.dispatch(updateAppInstallStatus(true))
       }
       window.addEventListener('beforeinstallprompt', window.ddti._updateAppInstallStatus);
@@ -135,7 +148,7 @@ class MyApp extends connect(store)(LitElement) {
     );
     window.performance.mark('dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-start');
     installMediaQueryWatcher(`(min-width: 460px)`,
-        () => store.dispatch(updateDrawerState(false)));
+      () => store.dispatch(updateDrawerState(false)));
     window.performance.mark('dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-end');
     performance.measure(
       "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher",
@@ -162,6 +175,14 @@ class MyApp extends connect(store)(LitElement) {
         // This object also takes an image property, that points to an img src.
       });
     }
+    if (changedProps.has('_author')) {
+      var element = document.querySelector("meta[name=author]");
+      element.setAttribute("content", this._author);
+    }
+    if (changedProps.has('_ldJson')) {
+      var element = document.querySelector("script[type='application/ld+json']");
+      element.textContent = JSON.stringify(this._ldJson);
+    }
   }
 
   _menuButtonClicked() {
@@ -186,7 +207,7 @@ class MyApp extends connect(store)(LitElement) {
     window.pwaNodejsTemplate._firstUserInteractionAndCleanListener = function (e) {
       // First user interaction
       console.log("Welcome user !")
-      
+
       // clean listenFirstUserInteraction listener
       window.removeEventListener("click", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
       window.removeEventListener("touchstart", window.pwaNodejsTemplate._firstUserInteractionAndCleanListener)
