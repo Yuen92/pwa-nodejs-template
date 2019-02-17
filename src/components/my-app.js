@@ -163,7 +163,8 @@ class MyApp extends connect(store)(LitElement) {
 
   updated(changedProps) {
     if (changedProps.has('_page')) {
-      const pageTitle = this.appTitle + ' - ' + this._page;
+      var pageFormated = this._page.charAt(0).toUpperCase() + this._page.slice(1);
+      const pageTitle = this.appTitle + ' - ' + pageFormated;
       updateMetadata({
         title: pageTitle
         // This object also takes an image property, that points to an img src.
