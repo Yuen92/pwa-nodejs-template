@@ -9,6 +9,7 @@ export const HomeStyles = html`
   section.first {
     box-shadow: none;
     display: block;
+    background-color: var(--app-secondary-color);
   }
   section.first h1 {
     color: var(--app-section-even-color);
