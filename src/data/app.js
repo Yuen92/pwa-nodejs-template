@@ -11,7 +11,7 @@ export const properties = {
             "@type": "Organization",
             "name": "Data-Driven Technological Innovations",
             "url": "https://www.thomas-bianconi.com",
-            "logo": "https://www.thomas-bianconi.com/logo.png",
+            "logo": "https://www.thomas-bianconi.com/esm-bundled/images/logo.png",
             "sameAs": [
                 "https://www.linkedin.com/in/thomas-b-61ba8298"
             ]
