@@ -81,18 +81,18 @@
         } else {
           // Workaround to avoid ServiceWorkerRegistration.update() after 2 seconds
           // Workaround to do update the service worker ASAP with a new registration
-          if (navigator.onLine) {
-            var serviceWorkerToRegister = ""
-            if(/service-worker\.js/.test(registrations[0].active.scriptURL)){
-              serviceWorkerToRegister = "service-worker-min.js"
-            }else{
-              serviceWorkerToRegister = "service-worker.js"
-            }
-            registrations[0].unregister();
-            navigator.serviceWorker.register(serviceWorkerToRegister, {
-              scope: '/',
-            });
-          }
+          // if (navigator.onLine) {
+          //   var serviceWorkerToRegister = ""
+          //   if(/service-worker\.js$/.test(registrations[0].active.scriptURL)){
+          //     serviceWorkerToRegister = "service-worker.js?v=1"
+          //   }else{
+          //     serviceWorkerToRegister = "service-worker.js"
+          //   }
+          //   registrations[0].unregister();
+          //   navigator.serviceWorker.register(serviceWorkerToRegister, {
+          //     scope: '/',
+          //   });
+          // }
         }
       });
     }

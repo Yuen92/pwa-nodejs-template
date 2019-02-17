@@ -22,13 +22,22 @@ import { PaperIconItemStyles } from './paper-icon-item-styles.js';
 // These are the elements needed by this element.
 import '@polymer/paper-item/paper-icon-item.js';
 
-
 // these icons are needed by this elements
 import { chevronRight } from '../data/my-icons.js';
 
+// Minimum static datas
+import { settingsMin } from '../data/settings-min.js';
+
 class MySettings extends connect(store)(PageViewElement) {
+
   render() {
     store.dispatch(updateDescription(this._description));
+
+    // Workaround due to weird behavior.
+    // Init in constructor should be sufficient.
+    if(typeof(this._settings.length) == "undefined"){
+      this._settings = settingsMin;
+    }
     return html`
       ${SharedStyles}
       ${PaperIconItemStyles}
@@ -89,14 +98,7 @@ class MySettings extends connect(store)(PageViewElement) {
 
   constructor() {
     super();
-    this._settings = [
-      {
-        "iconPath": "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z",
-        "iconName": "home",
-        "href": "/settings/app-install",
-        "name": "A2HS - Application Install"
-      }
-    ]
+    this._settings = settingsMin;
     this._description = "Settings page which list all the settings features for your amazing progressive web application Data-Driven Technological Innovations.";
   }
 

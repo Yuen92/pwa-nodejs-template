@@ -8,7 +8,6 @@
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
     "push-manifest.json",
-    "service-worker-min.js",
     "src/data/**",
     "images/**"
   ],

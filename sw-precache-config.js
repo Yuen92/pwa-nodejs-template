@@ -1,5 +1,6 @@
 module.exports = {
   staticFileGlobs: [
+    "*/@webcomponents/webcomponentsjs/webcomponents-loader.js",
     'src/**/*',
     'manifest.json',
     'images/shared/*',
@@ -7,7 +8,7 @@ module.exports = {
   ],
   runtimeCaching: [
     {
-      urlPattern: /\/@webcomponents\/webcomponentsjs\//,
+      urlPattern: /\/settings\/data/,
       handler: 'fastest'
     }
   ]
