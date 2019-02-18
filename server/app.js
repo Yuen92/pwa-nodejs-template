@@ -33,7 +33,7 @@ app.get(["/settings/datas"],
 /*******************************************************************************
  * Cache Policy
  ******************************************************************************/
-app.get(["/*.html","/*.js","/*.json","/*.ico","/*.png","/*.jpg","/*.webp"],
+app.get(["/*.html","/*.js","/*.json","/*.ico","/*.png","/*.jpg","/*.webp","/*hint"],
   function ( request, response, next ) {
     // 60sec * 60min * 24hours *7days => 604800
     response.cacheControl = {
