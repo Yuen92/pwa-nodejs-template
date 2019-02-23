@@ -5,7 +5,7 @@ export const HomeStylesMobile = html`
   @media (min-device-width: 767px){
     /* TODO: use url(./images/mobile/ddti.jpg) when server-pushed based on viewport will be available */
     section.first{
-      background-image: url(./images/shared/ddti.jpg);
+      /* background-image: url(./images/shared/ddti.jpg); */
       background-size: cover;
     }
     .wrapper {
@@ -30,7 +30,7 @@ export const HomeStylesMobile = html`
   @media (max-device-width: 767px){
     /* Do not use "background-size: cover;" or it will break the workaround with transform translate for iPhone */
     section.first{
-      background-image: url(./images/mobile/ddti.jpg);
+      /* background-image: url(./images/mobile/ddti.jpg); */
       transform: translateY(-70px);
       padding-top: 70px;
       margin-bottom: -70px;

@@ -12,8 +12,10 @@ import { updateDescription } from '../actions/app.js';
 import { SharedStyles } from '../styles/shared-styles.js';
 import { HomeStyles } from '../styles/home-styles.js';
 import { HomeStylesMobile } from '../styles/home-styles-mobile-460max.js';
-import { HomeStylesDesktop } from '../styles/home-styles-desktop-460min.js';
+import { HomeStyles640 } from '../styles/home-styles-640min.js';
+import { HomeStyles1280 } from '../styles/home-styles-1280min.js';
 import { HeroBannerTemplate } from './hero-banner-template.js';
+import { HomeStylesImages } from '../styles/home-styles-images.js';
 
 // Static Datas
 import { properties } from '../data/home.js';
@@ -24,8 +26,9 @@ class MyHome extends connect(store)(PageViewElement) {
     return html`
       ${SharedStyles}
       ${HomeStyles}
-      ${HomeStylesMobile}
-      ${HomeStylesDesktop}
+      ${HomeStyles640}
+      ${HomeStyles1280}
+      ${HomeStylesImages}
       <section class="first">
         <article>
           ${HeroBannerTemplate}
