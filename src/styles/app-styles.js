@@ -55,11 +55,6 @@ export const AppStyles = html`
     text-align: center;
     background: var(--app-header-background-color);
     color: var(--app-header-text-color);
-    
-    /* Workaround for standalone install application on iOS */
-    /* Look Read Me */
-    /* transform: translateY(-50px); */
-    /* padding-top: 50px; */
   }
 
   .toolbar-top {
