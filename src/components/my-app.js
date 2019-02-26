@@ -53,7 +53,7 @@ class MyApp extends connect(store)(LitElement) {
     
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
-        <a ?selected="${this._page === 'home'}" href="/home">Home</a>
+        <a ?selected="${this._page === 'home'}" href="/">Home</a>
         <a ?selected="${this._page === 'settings' || this._page === 'app-install'}" href="/settings">Settings</a>
         <a ?selected="${this._page === 'counter'}" href="/counter">Counter</a>
         <a ?selected="${this._page === 'shopping'}" href="/shopping">Shopping</a>
@@ -63,7 +63,7 @@ class MyApp extends connect(store)(LitElement) {
     <!-- Drawer content -->
     <app-drawer id="drawer" .opened="${this._drawerOpened}" @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
-        <a ?selected="${this._page === 'home'}" href="/home">Home</a>
+        <a ?selected="${this._page === 'home'}" href="/">Home</a>
         <a ?selected="${this._page === 'settings'}" href="/settings">Settings</a>
         <a ?selected="${this._page === 'counter'}" href="/counter">Counter</a>
         <a ?selected="${this._page === 'shopping'}" href="/shopping">Shopping</a>
