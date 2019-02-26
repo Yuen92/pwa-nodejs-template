@@ -138,7 +138,6 @@
       margin: 0;
       /* This is a font-stack that tries to use the system-default sans-serifs first */
       font-family: Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background: rgb(40, 50, 55);
       line-height: 1.5;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -159,7 +158,97 @@
 </head>
 
 <body>
-  <my-app appTitle="DDTI"></my-app>
+  <my-app appTitle="DDTI">
+    <style>
+      app-header {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        background: rgb(40, 50, 55);
+      }
+      @media (min-width: 461px){
+        app-header {
+          width: calc(100% - 17px);
+        }
+      }
+    </style>
+    <app-header>
+      <!-- App Tool Bar -->
+      <style>
+        app-toolbar {
+          display: flex;
+          padding: 0 16px;
+          height: 64px;
+          -webkit-align-items: center;
+          align-items: center;
+        }
+        .menu-btn {
+          display: block;
+          background: none;
+          border: none;
+          fill: white;
+          height: 44px;
+          width: 44px;
+        }
+        @media (min-width: 461px){
+          .menu-btn {
+            display: none;
+          }
+        }
+
+        [main-title] {
+          flex-basis:1e-09px;
+          font-size: 30px;
+          color: white;
+          text-align: center;
+          padding-right: 44px;
+          -webkit-flex: auto;
+          flex: auto;
+        }
+        
+        @media (min-width: 461px){
+          [main-title] {
+            padding-right: 0px;
+          }
+        }
+      </style>
+      <app-toolbar>
+        <button class="menu-btn" title="Menu">
+          <svg height="24" viewBox="0 0 24 24" width="24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+          </svg>
+        </button>
+        <div main-title>DDTI</div>
+      </app-toolbar>
+      <!-- Nav Tool Bar List -->
+      <style>
+        .toolbar-list {
+          text-align: center;
+          display: none;
+        }
+        .toolbar-list > a {
+          display: inline-block;
+          color: white;
+          text-decoration: none;
+          line-height: 30px;
+          padding: 4px 24px;
+          border-bottom: 4px solid rgb(40, 50, 55);
+        }
+        @media (min-width: 461px){
+          .toolbar-list {
+            display: block;
+          }
+        }
+      </style>
+      <nav class="toolbar-list">
+        <a href="/home" selected="">Home</a>
+        <a href="/settings">Settings</a>
+        <a href="/counter">Counter</a>
+        <a href="/shopping">Shopping</a>
+      </nav>
+    </app-header>
+  </my-app>
   <noscript>
     Please enable JavaScript to view this website.
   </noscript>
@@ -182,5 +271,4 @@
     );
   </script>
 </body>
-
 </html>
