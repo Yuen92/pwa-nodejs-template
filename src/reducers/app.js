@@ -13,10 +13,13 @@ import {
   ADD_PAGE_ANIMATION
 } from '../actions/app.js';
 
+// Static Datas
+import { properties } from '../data/app.js';
+
 const INITIAL_STATE = {
   pathname: window.document.location.pathname,
   page: '',
-  description: '',
+  description: properties.description,
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
