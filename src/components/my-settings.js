@@ -101,8 +101,9 @@ class MySettings extends connect(store)(PageViewElement) {
   constructor() {
     super();
     // this._settings = properties.settings;
-    store.dispatch(updateDescription(properties.settings));
+    store.dispatch(updateDescription(properties.description));
     this._description = properties.description;
+    console.log(this._description)
   }
 
   firstUpdated() {
