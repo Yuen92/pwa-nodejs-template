@@ -31,7 +31,7 @@ import { properties } from '../data/settings.js';
 
 class MySettings extends connect(store)(PageViewElement) {
   render() {
-    // store.dispatch(updateDescription(this._description));
+    store.dispatch(updateDescription(this._description));
 
     // Workaround due to weird behavior.
     // Init in constructor should be sufficient.
