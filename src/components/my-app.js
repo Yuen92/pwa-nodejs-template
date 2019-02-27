@@ -138,24 +138,29 @@ class MyApp extends connect(store)(LitElement) {
   firstUpdated() {
     // TODO: rework in order to don't disptach action during the watcher installation
     installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
-    window.performance.mark('dispatchUpdateOfflineDueToInstallOfflineWatcher-start');
+    if(window.performance){
+      window.performance.mark('dispatchUpdateOfflineDueToInstallOfflineWatcher-start');
+    }
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
-    window.performance.mark('dispatchUpdateOfflineDueToInstallOfflineWatcher-end');
-    performance.measure(
-      "dispatchUpdateOfflineDueToInstallOfflineWatcher",
-      "dispatchUpdateOfflineDueToInstallOfflineWatcher-start",
-      "dispatchUpdateOfflineDueToInstallOfflineWatcher-end"
-    );
-    window.performance.mark('dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-start');
-    installMediaQueryWatcher(`(min-width: 460px)`,
-      () => store.dispatch(updateDrawerState(false)));
-    window.performance.mark('dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-end');
-    performance.measure(
-      "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher",
-      "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-start",
-      "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-end"
-    );
-
+    if(window.performance){
+      window.performance.mark('dispatchUpdateOfflineDueToInstallOfflineWatcher-end');
+      performance.measure(
+        "dispatchUpdateOfflineDueToInstallOfflineWatcher",
+        "dispatchUpdateOfflineDueToInstallOfflineWatcher-start",
+        "dispatchUpdateOfflineDueToInstallOfflineWatcher-end"
+      );
+      window.performance.mark('dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-start');
+    }
+    installMediaQueryWatcher(`(min-width: 460px)`, () => store.dispatch(updateDrawerState(false)));
+    if(window.performance){
+      window.performance.mark('dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-end');
+      performance.measure(
+        "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher",
+        "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-start",
+        "dispatchUpdateDrawerStateDueToInstallMediaQueryWatcher-end"
+      );
+    }
+    
     // workaround for drawer when using paper-item
     this.shadowRoot.querySelector("app-header").style.zIndex = 1;
     this.shadowRoot.querySelector("app-drawer").style.zIndex = 1;
