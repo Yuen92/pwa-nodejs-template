@@ -35,10 +35,11 @@ app.get(["/settings/datas"],
  ******************************************************************************/
 app.get(["/*.html","/*.js","/*.json","/*.ico","/*.png","/*.jpg","/*.webp","/*hint"],
   function ( request, response, next ) {
-    // 60sec * 60min * 24hours *7days => 604800
+    // WebPageTest Recommandation : 60sec * 60min * 24hours * 7days => 604800
+    // Google PageSpeed Insights Recommandation on desktop : 60sec * 60min * 24hours * 365days => 31536000
     response.cacheControl = {
       noCache: false,
-      maxAge: 604800
+      maxAge: 31536000
     };
     next();
   }
