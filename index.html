@@ -86,31 +86,37 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        if (registrations.length == 0) {
-          // Load and register pre-caching Service Worker
-          window.addEventListener('load', function () {
-            navigator.serviceWorker.register('service-worker.js', {
-              scope: '/',
-            });
-          });
-        } else {
-          // Workaround to avoid ServiceWorkerRegistration.update() after 2 seconds
-          // Workaround to do update the service worker ASAP with a new registration
-          // if (navigator.onLine) {
-          //   var serviceWorkerToRegister = ""
-          //   if(/service-worker\.js$/.test(registrations[0].active.scriptURL)){
-          //     serviceWorkerToRegister = "service-worker.js?v=1"
-          //   }else{
-          //     serviceWorkerToRegister = "service-worker.js"
-          //   }
-          //   registrations[0].unregister();
-          //   navigator.serviceWorker.register(serviceWorkerToRegister, {
-          //     scope: '/',
-          //   });
-          // }
-        }
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('service-worker.js', {
+          scope: '/',
+        });
       });
+
+      // navigator.serviceWorker.getRegistrations().then(registrations => {
+      //   if (registrations.length == 0) {
+      //     // Load and register pre-caching Service Worker
+      //     window.addEventListener('load', function () {
+      //       navigator.serviceWorker.register('service-worker.js', {
+      //         scope: '/',
+      //       });
+      //     });
+      //   } else {
+      //     // Workaround to avoid ServiceWorkerRegistration.update() after 2 seconds
+      //     // Workaround to do update the service worker ASAP with a new registration
+      //     // if (navigator.onLine) {
+      //     //   var serviceWorkerToRegister = ""
+      //     //   if(/service-worker\.js$/.test(registrations[0].active.scriptURL)){
+      //     //     serviceWorkerToRegister = "service-worker.js?v=1"
+      //     //   }else{
+      //     //     serviceWorkerToRegister = "service-worker.js"
+      //     //   }
+      //     //   registrations[0].unregister();
+      //     //   navigator.serviceWorker.register(serviceWorkerToRegister, {
+      //     //     scope: '/',
+      //     //   });
+      //     // }
+      //   }
+      // });
     }
     
     // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
