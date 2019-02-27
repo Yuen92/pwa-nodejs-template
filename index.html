@@ -4,21 +4,23 @@
   <script>
     if(window.performance){
       window.performance.mark('indexParsing-start');
-      window.performance.mark('hintHack-start');
-      var isCached = performance.getEntriesByType("navigation")[0].transferSize === 0;
-      if(isCached){
-        var link = document.createElement("link");
-        link.setAttribute("rel","preload");
-        link.setAttribute("href","hint");
-        link.setAttribute("as","script");
-        document.head.insertBefore(link,document.head.firstChild)
+      if(performance.getEntriesByType("navigation")[0]){
+        window.performance.mark('hintHack-start');
+        var isCached = performance.getEntriesByType("navigation")[0].transferSize === 0;
+        if(isCached){
+          var link = document.createElement("link");
+          link.setAttribute("rel","preload");
+          link.setAttribute("href","hint");
+          link.setAttribute("as","script");
+          document.head.insertBefore(link,document.head.firstChild)
+        }
+        window.performance.mark('hintHack-end');
+        performance.measure(
+          "hintHack",
+          "hintHack-start",
+          "hintHack-end"
+        );
       }
-      window.performance.mark('hintHack-end');
-      performance.measure(
-        "hintHack",
-        "hintHack-start",
-        "hintHack-end"
-      );
     }
   </script>
   <meta charset="utf-8">
