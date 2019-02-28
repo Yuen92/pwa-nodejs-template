@@ -75,15 +75,6 @@ app.get(["/*service-worker.js"],
   }
 );
 
-app.get(["/esm-bundled/service-worker-min.js"],
-  function ( request, response, next ) {
-    response.set('Service-Worker-Allowed', '/');
-    response.set('Content-Type', 'application/javascript; charset=UTF-8');
-    var url = "build" + request.url;
-    response.sendFile(url , { root : __dirname});
-  }
-);
-
 /*******************************************************************************
  * SEO Stuff
  ******************************************************************************/
@@ -97,6 +88,13 @@ app.get(["/robots.txt"],
 app.get(["/sitemap.xml"],
   function ( request, response, next ) {
     response.set('Content-Type', 'application/xhtml+xml; charset=UTF-8');
+    response.sendFile(request.url , { root : __dirname});
+  }
+);
+
+app.get(["/hint"],
+  function ( request, response, next ) {
+    response.set('Content-Type', 'text/plain; charset=UTF-8');
     response.sendFile(request.url , { root : __dirname});
   }
 );
