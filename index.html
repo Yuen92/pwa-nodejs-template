@@ -177,11 +177,6 @@
         width: 100%;
         background: rgb(40, 50, 55);
       }
-      @media (min-width: 461px){
-        app-header {
-          width: calc(100% - 17px);
-        }
-      }
     </style>
     <app-header>
       <!-- App Tool Bar -->
@@ -258,6 +253,41 @@
         <a href="/shopping">Shopping</a>
       </nav>
     </app-header>
+    <!-- Spinner -->
+    <style>
+      .lds-dual-ring {
+        display: block;
+        margin: 0px auto 0px auto;
+        padding-top: 224px;
+        width: 64px;
+        height: 64px;
+      }
+      @media (min-width: 461px){
+        .lds-dual-ring {
+          padding-top: 20%;
+        }
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin: 1px;
+        border-radius: 50%;
+        border: 5px solid rgb(40, 50, 55);;
+        border-color: rgb(40, 50, 55) transparent rgb(40, 50, 55) transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <div class="lds-dual-ring"></div>
   </my-app>
   <noscript>
     Please enable JavaScript to view this website.
