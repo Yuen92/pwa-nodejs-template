@@ -11,7 +11,6 @@ import { updateDescription } from '../actions/app.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../styles/shared-styles.js';
 import { HomeStyles } from '../styles/home-styles.js';
-import { HomeStylesMobile } from '../styles/home-styles-mobile-460max.js';
 import { HomeStyles640 } from '../styles/home-styles-640min.js';
 import { HomeStyles1280 } from '../styles/home-styles-1280min.js';
 import { HeroBannerTemplate } from './hero-banner-template.js';

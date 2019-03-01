@@ -39,11 +39,11 @@ export const AppStyles = html`
         to { opacity: 1 }
   }
   @-webkit-keyframes translate {
-    from { -webkit-transform: translate(200px) }
+    from { -webkit-transform: translate(-100%) }
       to { -webkit-transform: none }
   }  
   @keyframes translate {
-      from { transform: translate(200px) }
+      from { transform: translate(-100%) }
         to { transform: none }
   }
 
