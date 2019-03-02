@@ -1,6 +1,8 @@
 import { html } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
+import { HeroBanner } from './hero-banner.js';
+
 
 // This element is connected to the Redux store.
 import { store } from '../store.js';
@@ -13,8 +15,6 @@ import { SharedStyles } from '../styles/shared-styles.js';
 import { HomeStyles } from '../styles/home-styles.js';
 import { HomeStyles640 } from '../styles/home-styles-640min.js';
 import { HomeStyles1280 } from '../styles/home-styles-1280min.js';
-import { HeroBannerTemplate } from './hero-banner-template.js';
-import { HomeStylesImages } from '../styles/home-styles-images.js';
 
 // Static Datas
 import { properties } from '../data/home.js';
@@ -27,11 +27,10 @@ class MyHome extends connect(store)(PageViewElement) {
       ${HomeStyles}
       ${HomeStyles640}
       ${HomeStyles1280}
-      ${HomeStylesImages}
-      <section class="first">
-        <article>
-          ${HeroBannerTemplate}
-        </article>
+      <hero-banner
+        .title="${properties.heroBannerSection.title}"
+        .contents="${properties.heroBannerSection.contents}"
+        .links="${properties.heroBannerSection.links}"></hero-banner>
       </section>
       <section class="cards-container">
         <div class="wrapper">
